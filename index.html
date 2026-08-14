@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wave Expeditions — Rediseño Web · Mockups & Estructura</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--blue:#0A5CA7;--yellow:#F7EE26;--cyan:#0099CC;--navy:#2D4059;--ink:#1A2535;--muted:#64748B;--line:#E6EBF1;--paper:#FBFCFD;}
+body{font-family:'Barlow',sans-serif;background:#0d1117;color:#e6edf3;min-height:100vh;padding:0 0 60px;}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#0d2a45 0%,var(--blue) 55%,var(--cyan) 100%);padding:52px 40px 44px;position:relative;overflow:hidden;}
+.hero::after{content:'🛶';position:absolute;right:40px;bottom:-20px;font-size:140px;opacity:.1;}
+.hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2;}
+.hero-logo{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:#fff;letter-spacing:.05em;margin-bottom:20px;}
+.hero-logo span{color:var(--yellow);}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-size:46px;font-weight:900;color:#fff;line-height:1.02;letter-spacing:-.01em;margin-bottom:12px;max-width:720px;}
+.hero h1 em{color:var(--yellow);font-style:normal;}
+.hero p{font-size:15px;color:rgba(255,255,255,.82);max-width:600px;line-height:1.6;margin-bottom:20px;}
+.hero-badges{display:flex;gap:9px;flex-wrap:wrap;}
+.hero-badge{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:11px;font-weight:700;padding:6px 14px;border-radius:30px;}
+
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px;}
+
+/* SECTION */
+.section{margin-top:44px;}
+.section-label{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.section-label .num{width:30px;height:30px;border-radius:8px;background:var(--blue);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.section-label h2{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:800;color:#fff;letter-spacing:-.01em;}
+.section-label .line{flex:1;height:1px;background:#21262d;}
+.section-label .count{font-size:11px;color:#7d8590;font-weight:600;}
+
+/* CARDS GRID */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid.two{grid-template-columns:repeat(2,1fr);}
+.card{background:#161b22;border:1px solid #30363d;border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .15s,border-color .15s,box-shadow .15s;display:flex;flex-direction:column;}
+.card:hover{transform:translateY(-4px);border-color:var(--cyan);box-shadow:0 14px 40px rgba(0,153,204,.15);}
+.card-thumb{height:110px;position:relative;display:flex;align-items:center;justify-content:center;font-size:44px;overflow:hidden;}
+.card-thumb .badge{position:absolute;top:10px;left:10px;font-size:9px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:4px;}
+.card-thumb .device{position:absolute;bottom:10px;right:10px;font-size:9px;font-weight:600;color:rgba(255,255,255,.7);background:rgba(0,0,0,.3);padding:3px 8px;border-radius:20px;}
+.card-body{padding:15px 17px;flex:1;display:flex;flex-direction:column;}
+.card-body h3{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:5px;}
+.card-body p{font-size:11.5px;color:#8b949e;line-height:1.55;flex:1;}
+.card-open{margin-top:11px;font-size:11px;font-weight:800;color:var(--cyan);letter-spacing:.03em;display:flex;align-items:center;gap:5px;}
+
+.badge-new{background:var(--yellow);color:var(--navy);}
+.badge-core{background:var(--blue);color:#fff;}
+.badge-tpl{background:var(--cyan);color:#fff;}
+
+/* footer note */
+.foot-note{margin-top:48px;background:#161b22;border:1px solid #30363d;border-radius:12px;padding:22px 26px;}
+.foot-note h3{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;color:var(--yellow);margin-bottom:10px;}
+.foot-note p{font-size:12.5px;color:#a8b3bd;line-height:1.7;}
+.foot-note code{background:#21262d;padding:2px 7px;border-radius:4px;color:#79c0ff;font-size:11.5px;}
+.foot-meta{text-align:center;margin-top:32px;font-size:11px;color:#5d646d;}
+
+@media(max-width:900px){.grid,.grid.two{grid-template-columns:1fr;}.hero h1{font-size:32px;}.hero,.wrap{padding-left:20px;padding-right:20px;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-logo">WAVE<span>•</span> EXPEDITIONS</div>
+    <h1>Rediseño Web — <em>Mockups & Estructura</em></h1>
+    <p>Propuesta completa de rediseño y migración de waveexpeditions.com. Estructura de sitio, homepage y plantillas de página, basadas en las reuniones del equipo y en datos reales de GA4, Search Console y Microsoft Clarity.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">🎯 Enfoque nicho: Rafting + Safari Float</span>
+      <span class="hero-badge">📊 Basado en datos reales</span>
+      <span class="hero-badge">🖥 Desktop + 📱 Mobile</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- 1. ESTRUCTURA -->
+  <div class="section">
+    <div class="section-label"><span class="num">1</span><h2>Estructura del Sitio</h2><span class="line"></span><span class="count">Sitemap</span></div>
+    <div class="grid two">
+      <a class="card" href="wave_sitemap_v3_tree.html" target="_blank">
+        <div class="card-thumb" style="background:linear-gradient(135deg,#1a3050,var(--navy));">🗺️<span class="badge badge-new">Versión final</span><span class="device">v3 · post 19 jun</span></div>
+        <div class="card-body">
+          <h3>Sitemap v3 — Estructura Nicho</h3>
+          <p>Mapa completo del sitio con menú simplificado, submenús Private, combos unificados y todas las decisiones de las reuniones. Incluye pendientes y redirects.</p>
+          <span class="card-open">ABRIR →</span>
+        </div>
+      </a>
+      <a class="card" href="wave_sitemap_v2_tree.html" target="_blank">
+        <div class="card-thumb" style="background:linear-gradient(135deg,#13243a,#1a3050);">🗂️<span class="device">v2 · referencia</span></div>
+        <div class="card-body">
+          <h3>Sitemap v2 — Versión anterior</h3>
+          <p>Primera versión nicho (reunión 15 jun). Se mantiene como referencia del proceso. La versión vigente es la v3.</p>
+          <span class="card-open">ABRIR →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 2. HOMEPAGE -->
+  <div class="section">
+    <div class="section-label"><span class="num">2</span><h2>Homepage</h2><span class="line"></span><span class="count">Desktop + Mobile</span></div>
+    <div class="grid two">
+      <a class="card" href="wave_homepage_v2_desktop_mobile.html" target="_blank">
+        <div class="card-thumb" style="background:linear-gradient(135deg,#0d3a6e,var(--blue));">🏠<span class="badge badge-new">Vigente</span><span class="device">Desktop + Mobile</span></div>
+        <div class="card-body">
+          <h3>Homepage — Desktop & Mobile</h3>
+          <p>Página principal con colores reales de marca, estructura nicho, sección Choose Your Adventure, comparativa Balsa vs Sarapiquí, Rafting Connection y anotaciones de datos.</p>
+          <span class="card-open">ABRIR →</span>
+        </div>
+      </a>
+      <a class="card" href="wave_mockup_cliente.html" target="_blank">
+        <div class="card-thumb" style="background:linear-gradient(135deg,#0d6e7a,var(--cyan));">🖼️<span class="device">Vista cliente</span></div>
+        <div class="card-body">
+          <h3>Homepage — Mockup Cliente</h3>
+          <p>Versión de presentación para el cliente. Referencia visual complementaria de la propuesta de homepage.</p>
+          <span class="card-open">ABRIR →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 3. PLANTILLAS DE PÁGINA -->
+  <div class="section">
+    <div class="section-label"><span class="num">3</span><h2>Plantillas de Página</h2><span class="line"></span><span class="count">6 templates</span></div>
+    <div class="grid">
+      <a class="card" href="wave_01_tour_product.html" target="_blank">
+        <div class="card-thumb" style="background:linear-gradient(135deg,#0d3a6e,var(--blue));">🛶<span class="badge badge-tpl">Template</span></div>
+        <div class="card-body"><h3>Tour / Producto</h3><p>Página de tour con widget de reserva sticky, calendario, galería, tabs y FAQs.</p><span class="card-open">ABRIR →</span></div>
+      </a>
+      <a class="card" href="wave_03_cart_checkout.html" target="_blank">
+        <div class="card-thumb" style="background:linear-gradient(135deg,#1a3050,var(--navy));">🛒<span class="badge badge-tpl">Template</span></div>
+        <div class="card-body"><h3>Cart + Checkout</h3><p>Carrito y checkout WooCommerce con cupón, Baccredomatic y PayPal.</p><span class="card-open">ABRIR →</span></div>
+      </a>
+      <a class="card" href="wave_thankyou_order_desktop_mobile.html" target="_blank">
+        <div class="card-thumb" style="background:linear-gradient(135deg,#0d3a6e,var(--cyan));">✅<span class="badge badge-new">Nuevo</span></div>
+        <div class="card-body"><h3>Thank You / Order</h3><p>Página post-reserva con confirmación, próximos pasos e upsell Get Your Photos.</p><span class="card-open">ABRIR →</span></div>
+      </a>
+      <a class="card" href="wave_blog_template_desktop_mobile.html" target="_blank">
+        <div class="card-thumb" style="background:linear-gradient(135deg,#15803D,#0d6e4a);">📝<span class="badge badge-new">Nuevo</span></div>
+        <div class="card-body"><h3>Blog — Guía de Destino</h3><p>Plantilla de blog tipo "Things to Do", con secciones de actividad y CTAs por tour.</p><span class="card-open">ABRIR →</span></div>
+      </a>
+      <a class="card" href="wave_05_balsa_vs_sarapiqui.html" target="_blank">
+        <div class="card-thumb" style="background:linear-gradient(135deg,#7c1a1a,#c0392b);">⚖️<span class="badge badge-tpl">Template</span></div>
+        <div class="card-body"><h3>Balsa vs Sarapiquí</h3><p>Página SEO comparativa con tabla, escala de dificultad y CTAs por río.</p><span class="card-open">ABRIR →</span></div>
+      </a>
+      <a class="card" href="wave_04_about_us.html" target="_blank">
+        <div class="card-thumb" style="background:linear-gradient(135deg,#2D4059,#475569);">⭐<span class="badge badge-tpl">Template</span></div>
+        <div class="card-body"><h3>About / Why Wave</h3><p>Página de marca con timeline, guías, certificación ICT y reviews.</p><span class="card-open">ABRIR →</span></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- INSTRUCCIONES -->
+  <div class="foot-note">
+    <h3>ℹ️ Cómo navegar</h3>
+    <p>Cada tarjeta abre un mockup renderizado en una pestaña nueva. Las versiones marcadas <strong style="color:var(--yellow);">Vigente / Versión final</strong> son las actuales; las de <strong>referencia</strong> muestran el proceso. Los mockups incluyen columnas de <code>Desktop</code> y <code>Mobile</code> y notas de diseño con la justificación de datos (GA4 / Clarity) y el mapeo técnico (Gutenberg / WooCommerce).</p>
+  </div>
+
+  <div class="foot-meta">
+    Wave Expeditions · Rediseño Web · Sinergia Marketing · Rodrigo Santamaría · 2026
+  </div>
+
+</div>
+
+</body>
+</html>
