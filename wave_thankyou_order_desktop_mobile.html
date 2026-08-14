@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wave Expeditions – Thank You / Order Received (Desktop + Mobile)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--blue:#0A5CA7;--yellow:#F7EE26;--cyan:#0099CC;--navy:#2D4059;--ink:#1A2535;--muted:#64748B;--line:#E6EBF1;--paper:#FBFCFD;--green:#16A34A;}
+body{font-family:'Barlow',sans-serif;background:#e8ecf1;padding:36px 40px 60px;min-width:1600px;color:var(--ink);}
+
+.meta-header{background:#0d1a2b;color:#fff;border-radius:14px;padding:22px 32px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(10,92,167,.35);}
+.meta-header h1{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.01em;}
+.meta-header p{font-size:12px;color:#7d9ab5;margin-top:4px;}
+.mbadges{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+.mbadge{padding:5px 13px;border-radius:20px;font-size:10.5px;font-weight:700;letter-spacing:.03em;}
+
+.gb-note{background:#0d1a2b;border:1px solid rgba(10,92,167,.3);border-left:3px solid var(--cyan);border-radius:10px;padding:13px 20px;margin-bottom:24px;color:#a8c0d8;font-size:12px;line-height:1.6;}
+.gb-note strong{color:var(--cyan);}
+
+.legend-bar{display:flex;gap:16px;flex-wrap:wrap;background:#fff;border-radius:10px;padding:12px 22px;border:1px solid #dde1e8;margin-bottom:28px;align-items:center;}
+.li{display:flex;align-items:center;gap:7px;font-size:11.5px;color:#444;}
+.ld{width:13px;height:13px;border-radius:3px;flex-shrink:0;}
+.legend-sep{width:1px;height:20px;background:#dde1e8;}
+
+.layout-row{display:flex;gap:44px;align-items:flex-start;justify-content:center;}
+.device-col{display:flex;flex-direction:column;align-items:center;}
+.device-label{font-size:13px;font-weight:700;color:#0d1a2b;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.device-label .dl-badge{background:var(--blue);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.06em;}
+
+.desktop-frame{width:900px;border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.18);border:2px solid #c8cdd6;background:var(--paper);}
+.desktop-chrome{background:#f0f0f0;border-bottom:1px solid #ddd;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.chrome-dots{display:flex;gap:5px;}
+.chrome-dot{width:11px;height:11px;border-radius:50%;}
+.chrome-bar{flex:1;background:#fff;border:1px solid #ddd;border-radius:5px;padding:4px 10px;font-size:10px;color:#888;}
+
+/* NAV */
+.d-nav{background:var(--navy);display:flex;align-items:center;padding:0 22px;height:52px;gap:4px;}
+.d-logo{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:900;color:#fff;letter-spacing:.04em;margin-right:14px;}
+.d-logo span{color:var(--yellow);}
+.nav-link{color:rgba(255,255,255,.85);font-size:11.5px;font-weight:600;padding:7px 10px;border-radius:5px;white-space:nowrap;}
+.nav-spacer{flex:1;}
+.nav-book{background:var(--yellow);color:var(--navy);font-size:11px;font-weight:800;padding:8px 15px;border-radius:6px;}
+
+/* SUCCESS HERO */
+.d-success{background:linear-gradient(135deg,#0d3a6e,var(--blue) 60%,var(--cyan));position:relative;overflow:hidden;padding:40px 40px 34px;text-align:center;}
+.d-success::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(247,238,38,.12),transparent 60%);}
+.d-success-raft{position:absolute;right:24px;bottom:-10px;font-size:80px;opacity:.12;}
+.d-check{width:72px;height:72px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:38px;margin:0 auto 16px;position:relative;z-index:2;box-shadow:0 8px 30px rgba(247,238,38,.4);}
+.d-success h1{position:relative;z-index:2;font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:900;color:#fff;line-height:1.05;margin-bottom:8px;}
+.d-success h1 span{color:var(--yellow);}
+.d-success p{position:relative;z-index:2;font-size:14px;color:rgba(255,255,255,.8);max-width:440px;margin:0 auto 16px;line-height:1.6;}
+.d-order-pill{position:relative;z-index:2;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:30px;padding:8px 18px;color:#fff;font-size:12px;font-weight:600;}
+.d-order-pill b{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--yellow);letter-spacing:.03em;}
+
+/* CONTENT WRAP */
+.d-wrap{padding:28px 40px 36px;display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start;}
+.d-main{min-width:0;}
+.d-side{display:flex;flex-direction:column;gap:16px;}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+.card-head{padding:13px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:9px;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--ink);}
+.card-head .badge-ok{margin-left:auto;background:rgba(22,163,74,.1);color:var(--green);font-size:10px;font-weight:800;padding:3px 10px;border-radius:20px;font-family:'Barlow',sans-serif;letter-spacing:.03em;}
+.card-body{padding:16px 18px;}
+
+/* ORDER SUMMARY */
+.order-item{display:flex;gap:14px;padding-bottom:14px;border-bottom:1px dashed var(--line);margin-bottom:14px;}
+.order-item-img{width:82px;height:82px;border-radius:9px;flex-shrink:0;background:linear-gradient(135deg,#0d3a6e,var(--blue));display:flex;align-items:center;justify-content:center;font-size:30px;}
+.order-item-info{flex:1;}
+.order-item-info h4{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;color:var(--ink);}
+.order-item-tag{display:inline-block;font-size:9px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--cyan);margin:2px 0 6px;}
+.order-detail-row{display:flex;gap:8px;font-size:12px;color:var(--muted);margin-bottom:3px;}
+.order-detail-row b{color:var(--ink);font-weight:600;}
+.order-totals{display:flex;flex-direction:column;gap:6px;}
+.total-row{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);}
+.total-row.grand{border-top:1px solid var(--line);padding-top:9px;margin-top:3px;font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--ink);}
+.total-row.grand span:last-child{color:var(--blue);}
+.pay-method{display:flex;align-items:center;gap:8px;margin-top:11px;padding:9px 12px;background:var(--paper);border:1px solid var(--line);border-radius:8px;font-size:11.5px;color:var(--muted);}
+.pay-method b{color:var(--ink);}
+
+/* NEXT STEPS */
+.steps{display:flex;flex-direction:column;gap:2px;}
+.step{display:flex;gap:14px;position:relative;padding-bottom:18px;}
+.step:last-child{padding-bottom:0;}
+.step:not(:last-child)::after{content:'';position:absolute;left:17px;top:36px;bottom:2px;width:2px;background:var(--line);}
+.step-num{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px;z-index:2;}
+.step-num.done{background:var(--green);color:#fff;}
+.step-num.now{background:var(--yellow);color:var(--navy);}
+.step-num.next{background:#fff;border:2px solid var(--line);color:var(--muted);}
+.step-body h4{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--ink);}
+.step-body p{font-size:12px;color:var(--muted);line-height:1.55;margin-top:1px;}
+
+/* PRACTICAL INFO */
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.info-box{border:1px solid var(--line);border-radius:9px;padding:13px 15px;}
+.info-box .ico{font-size:22px;margin-bottom:6px;}
+.info-box h4{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--ink);margin-bottom:4px;}
+.info-box p{font-size:11.5px;color:var(--muted);line-height:1.5;}
+.info-box ul{list-style:none;font-size:11.5px;color:var(--muted);line-height:1.7;}
+.info-box ul li::before{content:'✓ ';color:var(--green);font-weight:700;}
+
+/* ACTION BUTTONS */
+.action-row{display:flex;gap:10px;margin-top:16px;}
+.btn{font-size:12px;font-weight:800;padding:12px 18px;border-radius:8px;text-align:center;display:flex;align-items:center;justify-content:center;gap:7px;}
+.btn-y{background:var(--yellow);color:var(--navy);flex:1;}
+.btn-navy{background:var(--navy);color:#fff;flex:1;}
+.btn-wa{background:#25d366;color:#fff;flex:1;}
+.btn-outline{background:#fff;border:1.5px solid var(--line);color:var(--ink);flex:1;}
+
+/* SIDE: photos upsell (high revenue) */
+.side-photos{background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:12px;padding:18px;text-align:center;position:relative;overflow:hidden;}
+.side-photos::before{content:'📸';position:absolute;right:-8px;top:-8px;font-size:64px;opacity:.1;}
+.side-photos .tag{display:inline-block;background:var(--yellow);color:var(--navy);font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:4px;margin-bottom:10px;}
+.side-photos h3{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:#fff;line-height:1.1;margin-bottom:6px;}
+.side-photos p{font-size:11px;color:rgba(255,255,255,.75);line-height:1.5;margin-bottom:13px;}
+.side-photos .price{font-family:'Barlow Condensed',sans-serif;font-size:15px;color:var(--yellow);font-weight:800;margin-bottom:10px;}
+.side-photos .btn-y{width:100%;}
+
+/* SIDE: add another tour */
+.side-addon{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;}
+.side-addon h3{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--ink);margin-bottom:4px;}
+.side-addon .subtitle{font-size:11px;color:var(--muted);margin-bottom:12px;}
+.addon-item{display:flex;gap:10px;align-items:center;padding:8px;border-radius:8px;border:1px solid var(--line);margin-bottom:8px;}
+.addon-img{width:44px;height:44px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:20px;}
+.addon-info{flex:1;min-width:0;}
+.addon-info h5{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.1;}
+.addon-info .p{font-size:11px;color:var(--blue);font-weight:700;}
+.addon-btn{font-size:10px;font-weight:800;color:var(--blue);border:1px solid var(--blue);border-radius:5px;padding:5px 9px;flex-shrink:0;}
+
+/* SIDE: support */
+.side-support{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center;}
+.side-support h3{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--ink);margin-bottom:4px;}
+.side-support p{font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:11px;}
+
+/* FOLLOW BAND */
+.d-follow{background:#fff;border-top:1px solid var(--line);padding:22px 40px;display:flex;align-items:center;justify-content:space-between;}
+.d-follow h3{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:800;color:var(--ink);}
+.d-follow p{font-size:11.5px;color:var(--muted);margin-top:2px;}
+.d-follow-icons{display:flex;gap:9px;}
+.d-follow-icon{width:40px;height:40px;border-radius:9px;background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.d-hashtag{background:rgba(10,92,167,.08);color:var(--blue);font-weight:800;font-size:12px;padding:8px 14px;border-radius:8px;}
+
+/* FOOTER */
+.d-footer{background:#081320;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;}
+.d-footer-logo{font-family:'Barlow Condensed',sans-serif;color:#fff;font-weight:900;font-size:14px;}
+.d-footer-logo span{color:var(--yellow);}
+.d-footer-copy{color:rgba(255,255,255,.25);font-size:9.5px;}
+
+/* ══════ MOBILE ══════ */
+.mobile-outer{width:375px;}
+.mobile-phone{background:#1a1a2e;border-radius:46px;padding:14px 12px;box-shadow:0 24px 64px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.08);border:2px solid #2a2a3e;}
+.phone-notch{width:120px;height:28px;background:#111;border-radius:14px;margin:0 auto 10px;}
+.phone-screen{background:var(--paper);border-radius:34px;overflow:hidden;}
+
+.m-nav{background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:48px;}
+.m-logo{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;color:#fff;}
+.m-logo span{color:var(--yellow);}
+.m-burger{display:flex;flex-direction:column;gap:3px;}
+.m-burger span{width:17px;height:2px;background:#fff;border-radius:2px;}
+
+.m-success{background:linear-gradient(135deg,#0d3a6e,var(--blue) 60%,var(--cyan));padding:28px 18px 24px;text-align:center;position:relative;overflow:hidden;}
+.m-check{width:60px;height:60px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 13px;box-shadow:0 8px 24px rgba(247,238,38,.4);}
+.m-success h1{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:#fff;line-height:1.05;margin-bottom:7px;}
+.m-success h1 span{color:var(--yellow);}
+.m-success p{font-size:12px;color:rgba(255,255,255,.8);line-height:1.5;margin-bottom:13px;}
+.m-order-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:30px;padding:7px 15px;color:#fff;font-size:11px;font-weight:600;}
+.m-order-pill b{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;color:var(--yellow);}
+
+.m-content{padding:16px;display:flex;flex-direction:column;gap:14px;}
+.m-card{background:#fff;border:1px solid var(--line);border-radius:11px;overflow:hidden;}
+.m-card-head{padding:11px 15px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--ink);}
+.m-card-head .badge-ok{margin-left:auto;background:rgba(22,163,74,.1);color:var(--green);font-size:9px;font-weight:800;padding:2px 8px;border-radius:20px;font-family:'Barlow',sans-serif;}
+.m-card-body{padding:14px 15px;}
+
+.m-order-item{display:flex;gap:11px;margin-bottom:12px;}
+.m-order-item-img{width:60px;height:60px;border-radius:8px;flex-shrink:0;background:linear-gradient(135deg,#0d3a6e,var(--blue));display:flex;align-items:center;justify-content:center;font-size:24px;}
+.m-order-item-info h4{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--ink);}
+.m-order-detail{font-size:11px;color:var(--muted);margin-top:2px;}
+.m-order-detail b{color:var(--ink);}
+.m-total-row{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);padding:3px 0;}
+.m-total-row.grand{border-top:1px solid var(--line);padding-top:8px;margin-top:4px;font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:900;color:var(--ink);}
+.m-total-row.grand span:last-child{color:var(--blue);}
+
+.m-step{display:flex;gap:11px;position:relative;padding-bottom:14px;}
+.m-step:last-child{padding-bottom:0;}
+.m-step:not(:last-child)::after{content:'';position:absolute;left:15px;top:32px;bottom:0;width:2px;background:var(--line);}
+.m-step-num{width:31px;height:31px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;z-index:2;}
+.m-step-num.done{background:var(--green);color:#fff;}
+.m-step-num.now{background:var(--yellow);color:var(--navy);}
+.m-step-num.next{background:#fff;border:2px solid var(--line);color:var(--muted);}
+.m-step-body h4{font-family:'Barlow Condensed',sans-serif;font-size:13.5px;font-weight:800;color:var(--ink);}
+.m-step-body p{font-size:11px;color:var(--muted);line-height:1.5;}
+
+.m-actions{display:flex;flex-direction:column;gap:8px;}
+.m-btn{font-size:12px;font-weight:800;padding:12px;border-radius:8px;text-align:center;}
+.m-btn-y{background:var(--yellow);color:var(--navy);}
+.m-btn-wa{background:#25d366;color:#fff;}
+.m-btn-outline{background:#fff;border:1.5px solid var(--line);color:var(--ink);}
+
+.m-photos{background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:11px;padding:16px;text-align:center;position:relative;overflow:hidden;}
+.m-photos .tag{display:inline-block;background:var(--yellow);color:var(--navy);font-size:8.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:2px 9px;border-radius:4px;margin-bottom:8px;}
+.m-photos h3{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;color:#fff;margin-bottom:5px;}
+.m-photos p{font-size:10.5px;color:rgba(255,255,255,.75);line-height:1.45;margin-bottom:11px;}
+.m-photos .m-btn-y{display:block;}
+
+.m-sticky-bar{display:flex;gap:8px;padding:9px 14px;background:#0d1a2b;position:sticky;bottom:0;border-top:1px solid rgba(255,255,255,.08);}
+.m-sticky-wa{flex:1;background:#25d366;color:#fff;font-size:11px;font-weight:800;padding:10px;border-radius:7px;text-align:center;}
+.m-sticky-cal{flex:1;background:var(--yellow);color:var(--navy);font-size:11px;font-weight:800;padding:10px;border-radius:7px;text-align:center;}
+
+/* ANNOTATIONS */
+.ann-col{width:330px;flex-shrink:0;}
+.ann-title{font-size:13px;font-weight:800;color:#0d1a2b;margin-bottom:6px;display:flex;align-items:center;gap:8px;}
+.ann-intro{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:16px;background:#fff;border:1px solid #dde1e8;border-radius:9px;padding:12px 14px;}
+.ann-intro code{background:#eef2f6;padding:1px 5px;border-radius:3px;color:var(--blue);font-size:10px;font-weight:600;}
+.gblock{background:#fff;border:1px solid #dde1e8;border-radius:9px;padding:12px 14px;margin-bottom:9px;border-left:3px solid var(--blue);}
+.gblock.custom{border-left-color:var(--yellow);}
+.gblock.plugin{border-left-color:var(--cyan);}
+.gblock-head{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+.gblock-sec{font-size:9px;font-weight:800;background:var(--navy);color:#fff;width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.gblock-name{font-size:12px;font-weight:800;color:#0d1a2b;}
+.gblock-tag{font-size:8px;font-weight:700;padding:2px 7px;border-radius:20px;margin-left:auto;}
+.tag-woo{background:rgba(122,71,167,.12);color:#7a47a7;}
+.tag-custom{background:rgba(247,238,38,.3);color:#8a7400;}
+.tag-plugin{background:rgba(0,153,204,.12);color:var(--cyan);}
+.gblock p{font-size:10.5px;color:var(--muted);line-height:1.55;}
+.gblock code{background:#eef2f6;padding:1px 5px;border-radius:3px;color:#0d1a2b;font-size:9.5px;font-weight:600;}
+.star-block{background:#FFFDF0;border:1px solid rgba(247,238,38,.6);border-left:3px solid var(--yellow);border-radius:9px;padding:13px 15px;margin-bottom:9px;}
+.star-block h4{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--ink);margin-bottom:5px;display:flex;align-items:center;gap:7px;}
+.star-block p{font-size:10.5px;color:#5a6472;line-height:1.6;}
+
+.data-panel{background:#0d1a2b;border-radius:14px;padding:24px 32px;margin-top:32px;}
+.data-panel h3{color:var(--cyan);font-size:14px;font-weight:800;margin-bottom:16px;font-family:'Barlow Condensed',sans-serif;}
+.data-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.data-card{background:#13243a;border:1px solid rgba(255,255,255,.06);border-radius:9px;padding:14px;}
+.data-card h4{font-size:11px;font-weight:700;margin-bottom:7px;font-family:'Barlow Condensed',sans-serif;letter-spacing:.02em;}
+.data-card p{font-size:10px;color:#8da9c4;line-height:1.6;}
+</style>
+</head>
+<body>
+
+<div class="meta-header">
+  <div>
+    <h1>Wave Expeditions — Thank You / Order Received · Desktop + Mobile</h1>
+    <p>Página post-reserva (WooCommerce order-received) · Confirmación + próximos pasos + info pre-tour + upsell Get Your Photos</p>
+  </div>
+  <div class="mbadges">
+    <span class="mbadge" style="background:#7a47a7;color:#fff;">WooCommerce</span>
+    <span class="mbadge" style="background:var(--yellow);color:var(--navy);">Revenue: Get Your Photos</span>
+  </div>
+</div>
+
+<div class="gb-note">
+  <strong>🧩 Qué es esta página:</strong> el <code>order-received</code> / thank-you de WooCommerce (se muestra tras pagar con Baccredomatic o PayPal). Reemplaza el template por defecto de WooCommerce por este diseño. Tres objetivos: <strong>tranquilizar</strong> (confirmación + próximos pasos claros), <strong>informar</strong> (pickup, qué llevar) y <strong>generar revenue extra</strong> (Get Your Photos + otro tour).
+</div>
+
+<div class="legend-bar">
+  <div class="li"><div class="ld" style="background:var(--blue);"></div>Nativo de WooCommerce</div><div class="legend-sep"></div>
+  <div class="li"><div class="ld" style="background:var(--yellow);"></div>Personalización Wave</div><div class="legend-sep"></div>
+  <div class="li"><div class="ld" style="background:var(--cyan);"></div>Plugin</div><div class="legend-sep"></div>
+  <div class="li"><div class="ld" style="background:var(--navy);"></div>Header / Footer (global)</div>
+</div>
+
+<div class="layout-row">
+
+  <!-- ══════ DESKTOP ══════ -->
+  <div class="device-col">
+    <div class="device-label">🖥 DESKTOP <span class="dl-badge">1440px</span></div>
+    <div class="desktop-frame">
+      <div class="desktop-chrome">
+        <div class="chrome-dots"><div class="chrome-dot" style="background:#ff5f57;"></div><div class="chrome-dot" style="background:#febc2e;"></div><div class="chrome-dot" style="background:#28c840;"></div></div>
+        <div class="chrome-bar">🔒 waveexpeditions.com/checkout/order-received/48821/</div>
+      </div>
+
+      <div class="d-nav">
+        <div class="d-logo">WAVE<span>•</span></div>
+        <span class="nav-link">Rafting Tours ▾</span>
+        <span class="nav-link">Safari Float ▾</span>
+        <span class="nav-link">Combos</span>
+        <span class="nav-link">Rafting Connection</span>
+        <span class="nav-link">Why Wave ▾</span>
+        <span class="nav-link">Blog &amp; Guide</span>
+        <span class="nav-spacer"></span>
+        <span class="nav-book">📅 BOOK NOW</span>
+      </div>
+
+      <!-- SUCCESS HERO -->
+      <div class="d-success">
+        <div class="d-success-raft">🛶</div>
+        <div class="d-check">✓</div>
+        <h1>Your Adventure is <span>Booked!</span></h1>
+        <p>Thank you, <b style="color:#fff;">Sarah</b>! Your booking is confirmed. We've sent a confirmation with all the details to your email — check your inbox (and spam, just in case).</p>
+        <div class="d-order-pill">Order <b>#WE-48821</b> · June 28, 2026</div>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="d-wrap">
+
+        <!-- MAIN -->
+        <div class="d-main">
+
+          <!-- ORDER SUMMARY -->
+          <div class="card" style="margin-bottom:18px;">
+            <div class="card-head">🧾 Your Booking <span class="badge-ok">● CONFIRMED</span></div>
+            <div class="card-body">
+              <div class="order-item">
+                <div class="order-item-img">🛶</div>
+                <div class="order-item-info">
+                  <span class="order-item-tag">⭐ Best Seller</span>
+                  <h4>Balsa River Rafting · Class II–III</h4>
+                  <div class="order-detail-row">📅 <span><b>Sunday, June 28, 2026</b> · 8:00 AM</span></div>
+                  <div class="order-detail-row">👥 <span><b>4 participants</b> (2 adults, 2 children)</span></div>
+                  <div class="order-detail-row">🚐 <span>Pickup: <b>Hotel Arenal Springs</b>, La Fortuna</span></div>
+                </div>
+              </div>
+              <div class="order-totals">
+                <div class="total-row"><span>Balsa River Rafting × 4</span><span>$356.00</span></div>
+                <div class="total-row"><span>Discount (WELCOME10)</span><span style="color:var(--green);">−$35.60</span></div>
+                <div class="total-row grand"><span>Total Paid</span><span>$320.40</span></div>
+              </div>
+              <div class="pay-method">💳 Paid with <b>Baccredomatic</b> · Transaction #BAC-2026-9931 · <span style="color:var(--green);font-weight:700;">Approved</span></div>
+            </div>
+          </div>
+
+          <!-- NEXT STEPS -->
+          <div class="card" style="margin-bottom:18px;">
+            <div class="card-head">🗺 What Happens Next</div>
+            <div class="card-body">
+              <div class="steps">
+                <div class="step">
+                  <div class="step-num done">✓</div>
+                  <div class="step-body"><h4>Booking confirmed</h4><p>Your payment went through and your spot is reserved. A confirmation email is on its way.</p></div>
+                </div>
+                <div class="step">
+                  <div class="step-num now">2</div>
+                  <div class="step-body"><h4>We'll reach out on WhatsApp</h4><p>Within 24 hours, our team confirms your exact pickup time and answers any questions.</p></div>
+                </div>
+                <div class="step">
+                  <div class="step-num next">3</div>
+                  <div class="step-body"><h4>Pickup on tour day</h4><p>Be ready in your hotel lobby 10 minutes before your pickup time. Bring the essentials (see below).</p></div>
+                </div>
+                <div class="step">
+                  <div class="step-num next">4</div>
+                  <div class="step-body"><h4>Hit the river 🌊</h4><p>Meet your guide, gear up, and enjoy the adventure. Lunch is included.</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRACTICAL INFO -->
+          <div class="card">
+            <div class="card-head">🎒 Before Your Tour</div>
+            <div class="card-body">
+              <div class="info-grid">
+                <div class="info-box">
+                  <div class="ico">👕</div>
+                  <h4>What to Bring</h4>
+                  <ul>
+                    <li>Quick-dry clothes</li>
+                    <li>Secure footwear</li>
+                    <li>Sunscreen &amp; a towel</li>
+                    <li>Change of clothes</li>
+                  </ul>
+                </div>
+                <div class="info-box">
+                  <div class="ico">✅</div>
+                  <h4>Included</h4>
+                  <ul>
+                    <li>All safety gear</li>
+                    <li>Certified guide</li>
+                    <li>Hotel pickup</li>
+                    <li>Traditional lunch</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="action-row">
+                <span class="btn btn-y">📅 Add to Calendar</span>
+                <span class="btn btn-outline">📄 Download Voucher</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SIDE -->
+        <div class="d-side">
+
+          <!-- GET YOUR PHOTOS (high revenue) -->
+          <div class="side-photos">
+            <span class="tag">📸 Don't miss it</span>
+            <h3>Get Your Photos &amp; Videos</h3>
+            <p>Our guides capture the whole adventure. Add your professional photos &amp; videos now and relive every rapid.</p>
+            <div class="price">from $35 · add to your order</div>
+            <span class="btn btn-y">ADD MY PHOTOS →</span>
+          </div>
+
+          <!-- ADD ANOTHER TOUR -->
+          <div class="side-addon">
+            <h3>Make it a Bigger Trip</h3>
+            <div class="subtitle">Popular with guests who booked rafting</div>
+            <div class="addon-item">
+              <div class="addon-img" style="background:linear-gradient(135deg,#0d6e7a,var(--cyan));">🌿</div>
+              <div class="addon-info"><h5>Safari Float</h5><div class="p">from $65</div></div>
+              <span class="addon-btn">ADD</span>
+            </div>
+            <div class="addon-item">
+              <div class="addon-img" style="background:linear-gradient(135deg,#1a3050,var(--navy));">🍫</div>
+              <div class="addon-info"><h5>Rafting + Chocolate</h5><div class="p">from $99</div></div>
+              <span class="addon-btn">ADD</span>
+            </div>
+          </div>
+
+          <!-- SUPPORT -->
+          <div class="side-support">
+            <h3>Questions?</h3>
+            <p>Our local team is here to help before your tour.</p>
+            <span class="btn btn-wa" style="width:100%;">💬 Chat on WhatsApp</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- FOLLOW -->
+      <div class="d-follow">
+        <div>
+          <h3>Tag Us on Your Adventure</h3>
+          <p>Share your rafting day and get featured</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span class="d-hashtag">#WaveExpeditions</span>
+          <div class="d-follow-icons">
+            <div class="d-follow-icon">📷</div>
+            <div class="d-follow-icon">👍</div>
+            <div class="d-follow-icon">▶️</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-footer">
+        <div class="d-footer-logo">WAVE<span>•</span> EXPEDITIONS</div>
+        <div class="d-footer-copy">© 2026 Wave Expeditions · La Fortuna, CR</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════ MOBILE ══════ -->
+  <div class="device-col">
+    <div class="device-label">📱 MOBILE <span class="dl-badge">375px</span></div>
+    <div class="mobile-outer">
+      <div class="mobile-phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+
+          <div class="m-nav">
+            <div class="m-logo">WAVE<span>•</span></div>
+            <div class="m-burger"><span></span><span></span><span></span></div>
+          </div>
+
+          <!-- SUCCESS -->
+          <div class="m-success">
+            <div class="m-check">✓</div>
+            <h1>Your Adventure is <span>Booked!</span></h1>
+            <p>Thank you, Sarah! We've sent all the details to your email.</p>
+            <div class="m-order-pill">Order <b>#WE-48821</b> · Jun 28</div>
+          </div>
+
+          <div class="m-content">
+
+            <!-- ORDER -->
+            <div class="m-card">
+              <div class="m-card-head">🧾 Your Booking <span class="badge-ok">● CONFIRMED</span></div>
+              <div class="m-card-body">
+                <div class="m-order-item">
+                  <div class="m-order-item-img">🛶</div>
+                  <div class="m-order-item-info">
+                    <h4>Balsa River Rafting</h4>
+                    <div class="m-order-detail">📅 <b>Sun, Jun 28</b> · 8:00 AM</div>
+                    <div class="m-order-detail">👥 4 participants</div>
+                    <div class="m-order-detail">🚐 Hotel Arenal Springs</div>
+                  </div>
+                </div>
+                <div class="m-total-row"><span>Balsa Rafting × 4</span><span>$356.00</span></div>
+                <div class="m-total-row"><span>Discount</span><span style="color:var(--green);">−$35.60</span></div>
+                <div class="m-total-row grand"><span>Total Paid</span><span>$320.40</span></div>
+              </div>
+            </div>
+
+            <!-- NEXT STEPS -->
+            <div class="m-card">
+              <div class="m-card-head">🗺 What Happens Next</div>
+              <div class="m-card-body">
+                <div class="m-step"><div class="m-step-num done">✓</div><div class="m-step-body"><h4>Booking confirmed</h4><p>Payment approved, spot reserved.</p></div></div>
+                <div class="m-step"><div class="m-step-num now">2</div><div class="m-step-body"><h4>We'll WhatsApp you</h4><p>Within 24 hrs to confirm pickup time.</p></div></div>
+                <div class="m-step"><div class="m-step-num next">3</div><div class="m-step-body"><h4>Pickup on tour day</h4><p>Be ready in your lobby 10 min early.</p></div></div>
+                <div class="m-step"><div class="m-step-num next">4</div><div class="m-step-body"><h4>Hit the river 🌊</h4><p>Gear up &amp; enjoy. Lunch included.</p></div></div>
+              </div>
+            </div>
+
+            <!-- ACTIONS -->
+            <div class="m-actions">
+              <span class="m-btn m-btn-y">📅 Add to Calendar</span>
+              <span class="m-btn m-btn-outline">📄 Download Voucher</span>
+            </div>
+
+            <!-- PHOTOS -->
+            <div class="m-photos">
+              <span class="tag">📸 Don't miss it</span>
+              <h3>Get Your Photos &amp; Videos</h3>
+              <p>Add your professional photos &amp; videos and relive every rapid. From $35.</p>
+              <span class="m-btn m-btn-y">ADD MY PHOTOS →</span>
+            </div>
+
+          </div>
+
+          <!-- STICKY -->
+          <div class="m-sticky-bar">
+            <span class="m-sticky-wa">💬 WhatsApp</span>
+            <span class="m-sticky-cal">📅 Add to Calendar</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════ ANNOTATIONS ══════ -->
+  <div class="ann-col">
+    <div class="ann-title">🧩 Mapa técnico (WooCommerce)</div>
+    <div class="ann-intro">
+      Esta página reemplaza el template <code>order-received</code> de WooCommerce. Los campos dinámicos <code>{como este}</code> los rellena WooCommerce con los datos reales del pedido. Marlon sobre-escribe <code>thankyou.php</code> en el tema hijo.
+    </div>
+
+    <div class="star-block">
+      <h4>💰 Bloque estrella: Get Your Photos</h4>
+      <p>Según las reuniones, "Get Your Photos genera mucho revenue". Colocarlo aquí — justo después de una compra confirmada, cuando el cliente está emocionado — es el mejor momento para el upsell. Ideal: <strong>order-bump</strong> que añade el producto al pedido existente sin re-checkout.</p>
+    </div>
+
+    <div class="gblock">
+      <div class="gblock-head"><span class="gblock-sec">H</span><span class="gblock-name">Header / Footer</span><span class="gblock-tag tag-woo">GLOBAL</span></div>
+      <p>Del tema (Site Editor). Menú v3. Se mantiene consistente con todo el sitio.</p>
+    </div>
+
+    <div class="gblock custom">
+      <div class="gblock-head"><span class="gblock-sec">1</span><span class="gblock-name">Success hero</span><span class="gblock-tag tag-custom">CUSTOM</span></div>
+      <p>Personalización sobre <code>woocommerce_thankyou</code>. Saludo con <code>{billing_first_name}</code> y número <code>{order_number}</code>. El check + 🛶 refuerzan la marca y el momento de logro.</p>
+    </div>
+
+    <div class="gblock">
+      <div class="gblock-head"><span class="gblock-sec">2</span><span class="gblock-name">Resumen del pedido</span><span class="gblock-tag tag-woo">WOO</span></div>
+      <p><code>woocommerce_order_details_table</code> re-estilizado. Datos dinámicos: producto, fecha/participantes (de los campos del booking form), <code>{order_total}</code>, cupón aplicado, y método de pago (Baccredomatic / PayPal) con estado.</p>
+    </div>
+
+    <div class="gblock custom">
+      <div class="gblock-head"><span class="gblock-sec">3</span><span class="gblock-name">What Happens Next</span><span class="gblock-tag tag-custom">CUSTOM</span></div>
+      <p>Timeline de 4 pasos. <strong>Reduce ansiedad post-compra</strong> y baja la carga de soporte (el cliente sabe qué esperar). Estático, mismo para todos los pedidos de tour.</p>
+    </div>
+
+    <div class="gblock custom">
+      <div class="gblock-head"><span class="gblock-sec">4</span><span class="gblock-name">Before Your Tour</span><span class="gblock-tag tag-custom">CUSTOM</span></div>
+      <p>Qué llevar + qué incluye + botones "Add to Calendar" (genera .ics con fecha del tour) y "Download Voucher" (PDF del pedido). Info práctica que evita no-shows.</p>
+    </div>
+
+    <div class="gblock plugin">
+      <div class="gblock-head"><span class="gblock-sec">5</span><span class="gblock-name">Get Your Photos upsell</span><span class="gblock-tag tag-plugin">PLUGIN</span></div>
+      <p>Order-bump / post-purchase upsell. Plugins: <strong>CartFlows</strong> o <strong>WooCommerce One Click Upsell</strong>. Añade el producto Get Your Photos al pedido sin volver a pagar todo.</p>
+    </div>
+
+    <div class="gblock plugin">
+      <div class="gblock-head"><span class="gblock-sec">6</span><span class="gblock-name">Add another tour</span><span class="gblock-tag tag-plugin">PLUGIN</span></div>
+      <p>Cross-sell "Popular con quienes reservaron rafting". Productos relacionados de WooCommerce o recomendaciones manuales (Safari Float, combos).</p>
+    </div>
+
+    <div class="gblock custom">
+      <div class="gblock-head"><span class="gblock-sec">7</span><span class="gblock-name">Support WhatsApp</span><span class="gblock-tag tag-custom">CUSTOM</span></div>
+      <p>Botón directo a WhatsApp con mensaje pre-llenado que incluye <code>{order_number}</code>. Baja tickets de soporte.</p>
+    </div>
+
+    <div class="gblock custom">
+      <div class="gblock-head"><span class="gblock-sec">8</span><span class="gblock-name">Follow / Tag us</span><span class="gblock-tag tag-custom">CUSTOM</span></div>
+      <p>Social + hashtag. Construye comunidad y genera UGC (contenido de usuarios) que alimenta marketing.</p>
+    </div>
+
+    <div class="gblock custom">
+      <div class="gblock-head"><span class="gblock-sec">M</span><span class="gblock-name">Sticky bar mobile</span><span class="gblock-tag tag-custom">CUSTOM</span></div>
+      <p>WhatsApp + Add to Calendar siempre visibles. Las 2 acciones más útiles justo después de reservar desde el móvil.</p>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- DATA PANEL -->
+<div class="data-panel">
+  <h3>🎯 Por qué esta página trabaja para el negocio</h3>
+  <div class="data-grid">
+    <div class="data-card"><h4 style="color:#F7EE26;">💰 Revenue extra</h4><p>El momento post-compra es el mejor para vender más. Get Your Photos (alto revenue) + otro tour, sin fricción de re-checkout. Cada pedido puede crecer 20–40%.</p></div>
+    <div class="data-card"><h4 style="color:#58a6ff;">😌 Reduce ansiedad</h4><p>"What Happens Next" + confirmación clara + WhatsApp hacen que el cliente se sienta seguro. Menos cancelaciones por incertidumbre.</p></div>
+    <div class="data-card"><h4 style="color:#5ad6e8;">📉 Menos soporte</h4><p>Info de pickup, qué llevar, y contacto directo reducen los mensajes "¿y ahora qué?". El equipo local trabaja menos en dudas repetidas.</p></div>
+    <div class="data-card"><h4 style="color:#4ade80;">🎬 Genera comunidad</h4><p>Hashtag + follow convierten al cliente en promotor. El UGC (fotos etiquetadas) alimenta redes sin costo de producción.</p></div>
+  </div>
+</div>
+
+</body>
+</html>
