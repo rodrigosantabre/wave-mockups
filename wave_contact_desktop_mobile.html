@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wave Expeditions – Contact Us (Desktop + Mobile)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--blue:#0A5CA7;--yellow:#F7EE26;--cyan:#0099CC;--navy:#2D4059;--ink:#1A2535;--muted:#64748B;--line:#E6EBF1;--paper:#FBFCFD;--green:#16A34A;}
+body{font-family:'Barlow',sans-serif;background:#e8ecf1;padding:36px 40px 60px;min-width:1600px;color:var(--ink);}
+.meta-header{background:#0d1a2b;color:#fff;border-radius:14px;padding:22px 32px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(10,92,167,.35);}
+.meta-header h1{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.01em;}
+.meta-header p{font-size:12px;color:#7d9ab5;margin-top:4px;}
+.mbadges{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+.mbadge{padding:5px 13px;border-radius:20px;font-size:10.5px;font-weight:700;letter-spacing:.03em;}
+.gb-note{background:#0d1a2b;border:1px solid rgba(10,92,167,.3);border-left:3px solid var(--cyan);border-radius:10px;padding:13px 20px;margin-bottom:24px;color:#a8c0d8;font-size:12px;line-height:1.6;}
+.gb-note strong{color:var(--cyan);}
+.legend-bar{display:flex;gap:16px;flex-wrap:wrap;background:#fff;border-radius:10px;padding:12px 22px;border:1px solid #dde1e8;margin-bottom:28px;align-items:center;}
+.li{display:flex;align-items:center;gap:7px;font-size:11.5px;color:#444;}
+.ld{width:13px;height:13px;border-radius:3px;flex-shrink:0;}
+.legend-sep{width:1px;height:20px;background:#dde1e8;}
+.layout-row{display:flex;gap:44px;align-items:flex-start;justify-content:center;}
+.device-col{display:flex;flex-direction:column;align-items:center;}
+.device-label{font-size:13px;font-weight:700;color:#0d1a2b;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.device-label .dl-badge{background:var(--blue);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.06em;}
+.desktop-frame{width:900px;border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.18);border:2px solid #c8cdd6;background:var(--paper);}
+.desktop-chrome{background:#f0f0f0;border-bottom:1px solid #ddd;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.chrome-dots{display:flex;gap:5px;}
+.chrome-dot{width:11px;height:11px;border-radius:50%;}
+.chrome-bar{flex:1;background:#fff;border:1px solid #ddd;border-radius:5px;padding:4px 10px;font-size:10px;color:#888;}
+
+.d-nav{background:var(--navy);display:flex;align-items:center;padding:0 22px;height:52px;gap:4px;}
+.d-logo{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:900;color:#fff;letter-spacing:.04em;margin-right:14px;}
+.d-logo span{color:var(--yellow);}
+.nav-link{color:rgba(255,255,255,.85);font-size:11.5px;font-weight:600;padding:7px 10px;border-radius:5px;white-space:nowrap;}
+.nav-link.active{color:var(--yellow);}
+.nav-spacer{flex:1;}
+.nav-book{background:var(--yellow);color:var(--navy);font-size:11px;font-weight:800;padding:8px 15px;border-radius:6px;}
+
+/* HERO */
+.d-hero{background:linear-gradient(135deg,#0d3a6e,var(--blue) 60%,var(--cyan));position:relative;overflow:hidden;padding:38px 40px 32px;}
+.d-hero::after{content:'💬';position:absolute;right:34px;bottom:-14px;font-size:96px;opacity:.12;}
+.d-hero .bc{font-size:10.5px;color:rgba(255,255,255,.7);margin-bottom:12px;position:relative;z-index:2;}
+.d-hero h1{font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;color:#fff;line-height:1.03;margin-bottom:9px;position:relative;z-index:2;}
+.d-hero h1 span{color:var(--yellow);}
+.d-hero p{font-size:14px;color:rgba(255,255,255,.82);max-width:480px;line-height:1.6;position:relative;z-index:2;}
+
+/* BODY */
+.d-wrap{padding:30px 40px 38px;display:grid;grid-template-columns:1.3fr 1fr;gap:26px;align-items:start;}
+
+/* FORM */
+.form-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px 26px;}
+.form-card h2{font-family:'Barlow Condensed',sans-serif;font-size:23px;font-weight:800;color:var(--ink);margin-bottom:4px;}
+.form-card .sub{font-size:12px;color:var(--muted);margin-bottom:20px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.field{display:flex;flex-direction:column;gap:5px;}
+.field.full{grid-column:1 / -1;}
+.field label{font-size:11px;font-weight:700;color:var(--ink);letter-spacing:.02em;}
+.field label .req{color:#dc2626;}
+.field input,.field select,.field textarea{border:1.5px solid var(--line);border-radius:8px;padding:11px 13px;font-family:'Barlow',sans-serif;font-size:13px;color:var(--ink);background:var(--paper);}
+.field input::placeholder,.field textarea::placeholder{color:#aab4c0;}
+.field textarea{resize:none;min-height:110px;}
+.field .hint{font-size:10px;color:var(--muted);}
+.field-active{border-color:var(--blue)!important;box-shadow:0 0 0 3px rgba(10,92,167,.1);}
+.form-submit{background:var(--yellow);color:var(--navy);font-size:13px;font-weight:800;padding:14px;border-radius:9px;text-align:center;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:8px;}
+.form-consent{font-size:10.5px;color:var(--muted);line-height:1.5;margin-top:12px;display:flex;gap:8px;}
+.form-consent input{margin-top:2px;}
+
+/* SIDE INFO */
+.side{display:flex;flex-direction:column;gap:14px;}
+.contact-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;}
+.contact-card h3{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--ink);margin-bottom:14px;}
+.contact-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;}
+.contact-item:last-child{margin-bottom:0;}
+.contact-ico{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:17px;}
+.ci-wa{background:rgba(37,211,102,.12);}
+.ci-phone{background:rgba(10,92,167,.1);}
+.ci-mail{background:rgba(0,153,204,.1);}
+.ci-loc{background:rgba(247,238,38,.25);}
+.contact-item .ci-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+.contact-item .ci-val{font-size:13px;font-weight:700;color:var(--ink);line-height:1.3;}
+.contact-item .ci-val small{display:block;font-size:10.5px;font-weight:400;color:var(--muted);margin-top:1px;}
+
+.wa-cta{background:linear-gradient(135deg,#128C7E,#25d366);border-radius:12px;padding:18px 20px;text-align:center;}
+.wa-cta h3{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;color:#fff;margin-bottom:5px;}
+.wa-cta p{font-size:11px;color:rgba(255,255,255,.85);line-height:1.5;margin-bottom:13px;}
+.wa-cta .btn{display:block;background:#fff;color:#128C7E;font-size:12px;font-weight:800;padding:11px;border-radius:8px;}
+
+.hours-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 20px;}
+.hours-card h3{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--ink);margin-bottom:10px;display:flex;align-items:center;gap:7px;}
+.hours-row{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);padding:3px 0;}
+.hours-row b{color:var(--ink);}
+
+/* MAP */
+.d-map{height:230px;background:linear-gradient(135deg,#1a3050,var(--navy));display:flex;flex-direction:column;align-items:center;justify-content:center;color:rgba(255,255,255,.5);gap:8px;position:relative;}
+.d-map .pin{font-size:40px;}
+.d-map .maplabel{font-size:12px;}
+.d-map .mapnote{position:absolute;bottom:12px;background:rgba(0,0,0,.35);padding:5px 12px;border-radius:20px;font-size:10px;color:rgba(255,255,255,.7);}
+
+/* FAQ mini */
+.d-faqband{padding:26px 40px;background:#fff;border-top:1px solid var(--line);}
+.d-faqband h3{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--ink);margin-bottom:14px;text-align:center;}
+.faq-mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.faq-mini{border:1px solid var(--line);border-radius:9px;padding:12px 15px;display:flex;justify-content:space-between;font-size:12.5px;font-weight:700;color:var(--ink);}
+.faq-mini span{color:var(--blue);font-size:16px;}
+
+.d-footer{background:#081320;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;}
+.d-footer-logo{font-family:'Barlow Condensed',sans-serif;color:#fff;font-weight:900;font-size:14px;}
+.d-footer-logo span{color:var(--yellow);}
+.d-footer-copy{color:rgba(255,255,255,.25);font-size:9.5px;}
+
+/* MOBILE */
+.mobile-outer{width:375px;}
+.mobile-phone{background:#1a1a2e;border-radius:46px;padding:14px 12px;box-shadow:0 24px 64px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.08);border:2px solid #2a2a3e;}
+.phone-notch{width:120px;height:28px;background:#111;border-radius:14px;margin:0 auto 10px;}
+.phone-screen{background:var(--paper);border-radius:34px;overflow:hidden;}
+.m-nav{background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:48px;}
+.m-logo{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;color:#fff;}
+.m-logo span{color:var(--yellow);}
+.m-burger{display:flex;flex-direction:column;gap:3px;}
+.m-burger span{width:17px;height:2px;background:#fff;border-radius:2px;}
+.m-hero{background:linear-gradient(135deg,#0d3a6e,var(--blue) 60%,var(--cyan));padding:24px 16px 22px;position:relative;overflow:hidden;}
+.m-hero h1{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:#fff;line-height:1.03;margin-bottom:7px;position:relative;z-index:2;}
+.m-hero h1 span{color:var(--yellow);}
+.m-hero p{font-size:12px;color:rgba(255,255,255,.82);line-height:1.5;position:relative;z-index:2;}
+.m-content{padding:16px;display:flex;flex-direction:column;gap:14px;}
+.m-form{background:#fff;border:1px solid var(--line);border-radius:12px;padding:17px 16px;}
+.m-form h2{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:800;color:var(--ink);margin-bottom:3px;}
+.m-form .sub{font-size:11px;color:var(--muted);margin-bottom:15px;}
+.m-field{display:flex;flex-direction:column;gap:5px;margin-bottom:12px;}
+.m-field label{font-size:11px;font-weight:700;color:var(--ink);}
+.m-field label .req{color:#dc2626;}
+.m-field input,.m-field select,.m-field textarea{border:1.5px solid var(--line);border-radius:8px;padding:11px 12px;font-family:'Barlow',sans-serif;font-size:13px;color:var(--ink);background:var(--paper);}
+.m-field textarea{resize:none;min-height:90px;}
+.m-field-active{border-color:var(--blue)!important;box-shadow:0 0 0 3px rgba(10,92,167,.1);}
+.m-submit{background:var(--yellow);color:var(--navy);font-size:13px;font-weight:800;padding:13px;border-radius:9px;text-align:center;}
+.m-wa-cta{background:linear-gradient(135deg,#128C7E,#25d366);border-radius:12px;padding:16px;text-align:center;}
+.m-wa-cta h3{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:#fff;margin-bottom:4px;}
+.m-wa-cta p{font-size:10.5px;color:rgba(255,255,255,.85);margin-bottom:11px;}
+.m-wa-cta .btn{display:block;background:#fff;color:#128C7E;font-size:12px;font-weight:800;padding:11px;border-radius:8px;}
+.m-contact-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;}
+.m-contact-card h3{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;margin-bottom:12px;}
+.m-contact-item{display:flex;gap:10px;align-items:center;margin-bottom:12px;}
+.m-contact-item:last-child{margin-bottom:0;}
+.m-ci-ico{width:34px;height:34px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:15px;}
+.m-ci-val{font-size:12.5px;font-weight:700;color:var(--ink);}
+.m-ci-val small{display:block;font-size:10px;font-weight:400;color:var(--muted);}
+.m-map{height:150px;background:linear-gradient(135deg,#1a3050,var(--navy));display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:12px;gap:7px;}
+.m-sticky-bar{display:flex;gap:8px;padding:9px 14px;background:#0d1a2b;position:sticky;bottom:0;border-top:1px solid rgba(255,255,255,.08);}
+.m-sticky-wa{flex:1;background:#25d366;color:#fff;font-size:11px;font-weight:800;padding:10px;border-radius:7px;text-align:center;}
+.m-sticky-call{flex:1;background:var(--yellow);color:var(--navy);font-size:11px;font-weight:800;padding:10px;border-radius:7px;text-align:center;}
+
+/* ANNOTATIONS */
+.ann-col{width:330px;flex-shrink:0;}
+.ann-title{font-size:13px;font-weight:800;color:#0d1a2b;margin-bottom:6px;}
+.ann-intro{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:16px;background:#fff;border:1px solid #dde1e8;border-radius:9px;padding:12px 14px;}
+.ann-intro code{background:#eef2f6;padding:1px 5px;border-radius:3px;color:var(--blue);font-size:10px;font-weight:600;}
+.gblock{background:#fff;border:1px solid #dde1e8;border-radius:9px;padding:12px 14px;margin-bottom:9px;border-left:3px solid var(--blue);}
+.gblock.custom{border-left-color:var(--yellow);}
+.gblock.plugin{border-left-color:var(--cyan);}
+.gblock-head{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+.gblock-sec{font-size:9px;font-weight:800;background:var(--navy);color:#fff;width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.gblock-name{font-size:12px;font-weight:800;color:#0d1a2b;}
+.gblock-tag{font-size:8px;font-weight:700;padding:2px 7px;border-radius:20px;margin-left:auto;}
+.tag-core{background:rgba(10,92,167,.1);color:var(--blue);}
+.tag-custom{background:rgba(247,238,38,.3);color:#8a7400;}
+.tag-plugin{background:rgba(0,153,204,.12);color:var(--cyan);}
+.gblock p{font-size:10.5px;color:var(--muted);line-height:1.55;}
+.gblock code{background:#eef2f6;padding:1px 5px;border-radius:3px;color:#0d1a2b;font-size:9.5px;font-weight:600;}
+.star-block{background:#FFFDF0;border:1px solid rgba(247,238,38,.6);border-left:3px solid var(--yellow);border-radius:9px;padding:13px 15px;margin-bottom:9px;}
+.star-block h4{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--ink);margin-bottom:5px;}
+.star-block p{font-size:10.5px;color:#5a6472;line-height:1.6;}
+.data-panel{background:#0d1a2b;border-radius:14px;padding:24px 32px;margin-top:32px;}
+.data-panel h3{color:var(--cyan);font-size:14px;font-weight:800;margin-bottom:16px;font-family:'Barlow Condensed',sans-serif;}
+.data-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.data-card{background:#13243a;border:1px solid rgba(255,255,255,.06);border-radius:9px;padding:14px;}
+.data-card h4{font-size:11px;font-weight:700;margin-bottom:7px;font-family:'Barlow Condensed',sans-serif;}
+.data-card p{font-size:10px;color:#8da9c4;line-height:1.6;}
+</style>
+</head>
+<body>
+
+<div class="meta-header">
+  <div>
+    <h1>Wave Expeditions — Contact Us · Desktop + Mobile</h1>
+    <p>Página de contacto con formulario + info directa + WhatsApp + mapa · Base para el proyecto web</p>
+  </div>
+  <div class="mbadges">
+    <span class="mbadge" style="background:var(--blue);color:#fff;">Gutenberg + Form plugin</span>
+    <span class="mbadge" style="background:#25d366;color:#fff;">WhatsApp primero</span>
+  </div>
+</div>
+
+<div class="gb-note">
+  <strong>🧩 Base para Marlon:</strong> layout de 2 columnas — formulario a la izquierda, contacto directo + WhatsApp + horarios + mapa a la derecha. El form se arma con un plugin (WPForms / Contact Form 7 / Fluent Forms). Al enviar, redirige a la página <strong>Thank You Form</strong> (mockup aparte).
+</div>
+
+<div class="legend-bar">
+  <div class="li"><div class="ld" style="background:var(--blue);"></div>Bloque core de Gutenberg</div><div class="legend-sep"></div>
+  <div class="li"><div class="ld" style="background:var(--yellow);"></div>Personalización Wave</div><div class="legend-sep"></div>
+  <div class="li"><div class="ld" style="background:var(--cyan);"></div>Plugin (Form / Maps)</div><div class="legend-sep"></div>
+  <div class="li"><div class="ld" style="background:var(--navy);"></div>Header / Footer (global)</div>
+</div>
+
+<div class="layout-row">
+
+  <!-- DESKTOP -->
+  <div class="device-col">
+    <div class="device-label">🖥 DESKTOP <span class="dl-badge">1440px</span></div>
+    <div class="desktop-frame">
+      <div class="desktop-chrome">
+        <div class="chrome-dots"><div class="chrome-dot" style="background:#ff5f57;"></div><div class="chrome-dot" style="background:#febc2e;"></div><div class="chrome-dot" style="background:#28c840;"></div></div>
+        <div class="chrome-bar">🔒 waveexpeditions.com/contact/</div>
+      </div>
+      <div class="d-nav">
+        <div class="d-logo">WAVE<span>•</span></div>
+        <span class="nav-link">Rafting Tours ▾</span><span class="nav-link">Safari Float ▾</span><span class="nav-link">Combos</span><span class="nav-link">Rafting Connection</span><span class="nav-link">Why Wave ▾</span><span class="nav-link">Blog &amp; Guide</span>
+        <span class="nav-spacer"></span><span class="nav-book">📅 BOOK NOW</span>
+      </div>
+
+      <div class="d-hero">
+        <div class="bc">Home › Contact</div>
+        <h1>Let's Plan Your <span>Adventure</span></h1>
+        <p>Questions about a tour, a booking, or your La Fortuna trip? Our local team is here to help — usually within a few hours.</p>
+      </div>
+
+      <div class="d-wrap">
+        <!-- FORM -->
+        <div class="form-card">
+          <h2>Send Us a Message</h2>
+          <div class="sub">Fill this out and we'll get back to you by email. For a faster reply, message us on WhatsApp →</div>
+          <div class="form-row">
+            <div class="field"><label>First Name <span class="req">*</span></label><input placeholder="Sarah"></div>
+            <div class="field"><label>Last Name <span class="req">*</span></label><input placeholder="Johnson"></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>Email <span class="req">*</span></label><input class="field-active" placeholder="sarah@email.com"></div>
+            <div class="field"><label>Phone / WhatsApp</label><input placeholder="+1 555 123 4567"></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>I'm interested in</label><select><option>Select a tour…</option><option>Balsa River Rafting</option><option>Sarapiquí Rafting</option><option>Safari Float</option><option>Combos</option><option>Rafting Connection</option><option>Other / Not sure yet</option></select></div>
+            <div class="field"><label>Preferred date</label><input placeholder="📅 dd / mm / yyyy"></div>
+          </div>
+          <div class="field full" style="margin-bottom:14px;"><label>Your Message <span class="req">*</span></label><textarea placeholder="Tell us about your group, dates, or any questions…"></textarea></div>
+          <div class="form-submit">✉️ SEND MESSAGE</div>
+          <div class="form-consent"><input type="checkbox"><span>I agree to be contacted by Wave Expeditions about my inquiry. We never share your data. See our Privacy Policy.</span></div>
+        </div>
+
+        <!-- SIDE -->
+        <div class="side">
+          <div class="wa-cta">
+            <h3>💬 Prefer WhatsApp?</h3>
+            <p>The fastest way to reach us. Chat directly with our local team.</p>
+            <span class="btn">Chat on WhatsApp →</span>
+          </div>
+          <div class="contact-card">
+            <h3>Get in Touch</h3>
+            <div class="contact-item"><div class="contact-ico ci-wa">💬</div><div><div class="ci-label">WhatsApp</div><div class="ci-val">+506 2479 7262</div></div></div>
+            <div class="contact-item"><div class="contact-ico ci-phone">📞</div><div><div class="ci-label">Toll-Free (US/CA)</div><div class="ci-val">1-888-224-6105</div></div></div>
+            <div class="contact-item"><div class="contact-ico ci-mail">✉️</div><div><div class="ci-label">Email</div><div class="ci-val">info@waveexpeditions.com<small>We reply within a few hours</small></div></div></div>
+            <div class="contact-item"><div class="contact-ico ci-loc">📍</div><div><div class="ci-label">Find Us</div><div class="ci-val">La Fortuna, Alajuela<small>Costa Rica · near Arenal Volcano</small></div></div></div>
+          </div>
+          <div class="hours-card">
+            <h3>🕐 Office Hours</h3>
+            <div class="hours-row"><span>Monday – Saturday</span><b>6:00 AM – 8:00 PM</b></div>
+            <div class="hours-row"><span>Sunday</span><b>7:00 AM – 6:00 PM</b></div>
+            <div class="hours-row"><span>WhatsApp</span><b style="color:var(--green);">Always on</b></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAP -->
+      <div class="d-map">
+        <div class="pin">📍</div>
+        <div class="maplabel">Google Maps embed · Wave Expeditions, La Fortuna</div>
+        <div class="mapnote">🗺️ Mapa interactivo con dirección + botón "Cómo llegar"</div>
+      </div>
+
+      <!-- FAQ mini -->
+      <div class="d-faqband">
+        <h3>Quick Answers</h3>
+        <div class="faq-mini-grid">
+          <div class="faq-mini">How do I book a tour?<span>+</span></div>
+          <div class="faq-mini">Do you offer hotel pickup?<span>+</span></div>
+          <div class="faq-mini">What's your cancellation policy?<span>+</span></div>
+          <div class="faq-mini">Can I book for a large group?<span>+</span></div>
+        </div>
+      </div>
+
+      <div class="d-footer">
+        <div class="d-footer-logo">WAVE<span>•</span> EXPEDITIONS</div>
+        <div class="d-footer-copy">© 2026 Wave Expeditions · La Fortuna, CR</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOBILE -->
+  <div class="device-col">
+    <div class="device-label">📱 MOBILE <span class="dl-badge">375px</span></div>
+    <div class="mobile-outer">
+      <div class="mobile-phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="m-nav"><div class="m-logo">WAVE<span>•</span></div><div class="m-burger"><span></span><span></span><span></span></div></div>
+          <div class="m-hero">
+            <h1>Let's Plan Your <span>Adventure</span></h1>
+            <p>Questions about a tour or booking? Our local team is here to help.</p>
+          </div>
+          <div class="m-content">
+            <div class="m-wa-cta">
+              <h3>💬 Prefer WhatsApp?</h3>
+              <p>The fastest way to reach us.</p>
+              <span class="btn">Chat on WhatsApp →</span>
+            </div>
+            <div class="m-form">
+              <h2>Send Us a Message</h2>
+              <div class="sub">We'll reply by email within a few hours.</div>
+              <div class="m-field"><label>First Name <span class="req">*</span></label><input placeholder="Sarah"></div>
+              <div class="m-field"><label>Email <span class="req">*</span></label><input class="m-field-active" placeholder="sarah@email.com"></div>
+              <div class="m-field"><label>Phone / WhatsApp</label><input placeholder="+1 555 123 4567"></div>
+              <div class="m-field"><label>I'm interested in</label><select><option>Select a tour…</option><option>Rafting</option><option>Safari Float</option><option>Combos</option></select></div>
+              <div class="m-field"><label>Your Message <span class="req">*</span></label><textarea placeholder="Tell us about your group or questions…"></textarea></div>
+              <div class="m-submit">✉️ SEND MESSAGE</div>
+            </div>
+            <div class="m-contact-card">
+              <h3>Get in Touch</h3>
+              <div class="m-contact-item"><div class="m-ci-ico ci-wa">💬</div><div class="m-ci-val">+506 2479 7262<small>WhatsApp</small></div></div>
+              <div class="m-contact-item"><div class="m-ci-ico ci-phone">📞</div><div class="m-ci-val">1-888-224-6105<small>Toll-Free US/CA</small></div></div>
+              <div class="m-contact-item"><div class="m-ci-ico ci-mail">✉️</div><div class="m-ci-val">info@waveexpeditions.com<small>Email</small></div></div>
+              <div class="m-contact-item"><div class="m-ci-ico ci-loc">📍</div><div class="m-ci-val">La Fortuna, CR<small>Near Arenal Volcano</small></div></div>
+            </div>
+            <div class="m-map">📍 Google Maps embed</div>
+          </div>
+          <div class="m-sticky-bar">
+            <span class="m-sticky-wa">💬 WhatsApp</span>
+            <span class="m-sticky-call">📞 Call</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANNOTATIONS -->
+  <div class="ann-col">
+    <div class="ann-title">🧩 Mapa técnico</div>
+    <div class="ann-intro">La página combina bloques de Gutenberg para el layout + un plugin de formulario. Estructura de 2 columnas que en mobile se apila (form debajo del WhatsApp).</div>
+
+    <div class="star-block">
+      <h4>💬 WhatsApp primero</h4>
+      <p>El público de Wave es turista internacional que prefiere respuesta inmediata. Por eso el CTA de WhatsApp va arriba/destacado — reduce fricción y convierte más que esperar un email.</p>
+    </div>
+
+    <div class="gblock"><div class="gblock-head"><span class="gblock-sec">H</span><span class="gblock-name">Header / Footer</span><span class="gblock-tag tag-core">GLOBAL</span></div><p>Del tema (Site Editor), menú v3. Consistente con todo el sitio.</p></div>
+    <div class="gblock"><div class="gblock-head"><span class="gblock-sec">1</span><span class="gblock-name">Hero</span><span class="gblock-tag tag-core">CORE</span></div><p><code>Cover</code> o <code>Group</code> con degradado de marca + breadcrumb + título + intro.</p></div>
+    <div class="gblock plugin"><div class="gblock-head"><span class="gblock-sec">2</span><span class="gblock-name">Formulario</span><span class="gblock-tag tag-plugin">PLUGIN</span></div><p><strong>WPForms</strong>, Fluent Forms o Contact Form 7. Campos: nombre, email (req), teléfono, tour de interés (dropdown), fecha, mensaje. <strong>Redirect a Thank You Form</strong> al enviar + email de notificación al equipo.</p></div>
+    <div class="gblock custom"><div class="gblock-head"><span class="gblock-sec">3</span><span class="gblock-name">Contacto directo</span><span class="gblock-tag tag-custom">CUSTOM</span></div><p><code>Columns</code> + <code>Group</code> con WhatsApp, teléfono toll-free, email y dirección. Datos reales del sitio actual.</p></div>
+    <div class="gblock plugin"><div class="gblock-head"><span class="gblock-sec">4</span><span class="gblock-name">Mapa</span><span class="gblock-tag tag-plugin">PLUGIN</span></div><p><code>Google Maps embed</code> (bloque nativo o plugin) centrado en La Fortuna, con botón "Cómo llegar".</p></div>
+    <div class="gblock custom"><div class="gblock-head"><span class="gblock-sec">5</span><span class="gblock-name">Office Hours</span><span class="gblock-tag tag-custom">CUSTOM</span></div><p><code>Group</code> simple con horarios. Aclara expectativas de respuesta.</p></div>
+    <div class="gblock plugin"><div class="gblock-head"><span class="gblock-sec">6</span><span class="gblock-name">FAQ rápido</span><span class="gblock-tag tag-plugin">PLUGIN</span></div><p><code>Details</code> / acordeón con las dudas más comunes → desvía consultas repetidas y baja carga de soporte.</p></div>
+    <div class="gblock custom"><div class="gblock-head"><span class="gblock-sec">M</span><span class="gblock-name">Sticky bar mobile</span><span class="gblock-tag tag-custom">CUSTOM</span></div><p>WhatsApp + Call fijos abajo. Las 2 acciones más rápidas desde el móvil.</p></div>
+  </div>
+
+</div>
+
+<div class="data-panel">
+  <h3>🎯 Notas para el equipo</h3>
+  <div class="data-grid">
+    <div class="data-card"><h4 style="color:#25d366;">💬 Menos fricción</h4><p>WhatsApp destacado = respuesta inmediata para turistas. El form queda para consultas más detalladas o fuera de horario.</p></div>
+    <div class="data-card"><h4 style="color:#F7EE26;">🔗 Conecta con Thank You</h4><p>Al enviar el form, redirige a la página "Thank You Form" — confirma que se recibió y sugiere próximos pasos.</p></div>
+    <div class="data-card"><h4 style="color:#58a6ff;">📋 Dropdown de tour</h4><p>El campo "I'm interested in" pre-califica la consulta y ayuda al equipo a responder con contexto (y alimenta segmentación).</p></div>
+    <div class="data-card"><h4 style="color:#4ade80;">🛡️ Anti-spam</h4><p>Agregar reCAPTCHA / honeypot en el form. Consentimiento de datos visible (privacidad).</p></div>
+  </div>
+</div>
+
+</body>
+</html>

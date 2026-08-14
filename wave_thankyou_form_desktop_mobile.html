@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wave Expeditions – Thank You Form (Desktop + Mobile)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--blue:#0A5CA7;--yellow:#F7EE26;--cyan:#0099CC;--navy:#2D4059;--ink:#1A2535;--muted:#64748B;--line:#E6EBF1;--paper:#FBFCFD;--green:#16A34A;}
+body{font-family:'Barlow',sans-serif;background:#e8ecf1;padding:36px 40px 60px;min-width:1600px;color:var(--ink);}
+.meta-header{background:#0d1a2b;color:#fff;border-radius:14px;padding:22px 32px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(10,92,167,.35);}
+.meta-header h1{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;}
+.meta-header p{font-size:12px;color:#7d9ab5;margin-top:4px;}
+.mbadges{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+.mbadge{padding:5px 13px;border-radius:20px;font-size:10.5px;font-weight:700;}
+.gb-note{background:#0d1a2b;border:1px solid rgba(10,92,167,.3);border-left:3px solid var(--cyan);border-radius:10px;padding:13px 20px;margin-bottom:24px;color:#a8c0d8;font-size:12px;line-height:1.6;}
+.gb-note strong{color:var(--cyan);}
+.legend-bar{display:flex;gap:16px;flex-wrap:wrap;background:#fff;border-radius:10px;padding:12px 22px;border:1px solid #dde1e8;margin-bottom:28px;align-items:center;}
+.li{display:flex;align-items:center;gap:7px;font-size:11.5px;color:#444;}
+.ld{width:13px;height:13px;border-radius:3px;flex-shrink:0;}
+.legend-sep{width:1px;height:20px;background:#dde1e8;}
+.layout-row{display:flex;gap:44px;align-items:flex-start;justify-content:center;}
+.device-col{display:flex;flex-direction:column;align-items:center;}
+.device-label{font-size:13px;font-weight:700;color:#0d1a2b;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.device-label .dl-badge{background:var(--blue);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;}
+.desktop-frame{width:900px;border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.18);border:2px solid #c8cdd6;background:var(--paper);}
+.desktop-chrome{background:#f0f0f0;border-bottom:1px solid #ddd;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.chrome-dots{display:flex;gap:5px;}
+.chrome-dot{width:11px;height:11px;border-radius:50%;}
+.chrome-bar{flex:1;background:#fff;border:1px solid #ddd;border-radius:5px;padding:4px 10px;font-size:10px;color:#888;}
+
+.d-nav{background:var(--navy);display:flex;align-items:center;padding:0 22px;height:52px;gap:4px;}
+.d-logo{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:900;color:#fff;margin-right:14px;}
+.d-logo span{color:var(--yellow);}
+.nav-link{color:rgba(255,255,255,.85);font-size:11.5px;font-weight:600;padding:7px 10px;border-radius:5px;}
+.nav-spacer{flex:1;}
+.nav-book{background:var(--yellow);color:var(--navy);font-size:11px;font-weight:800;padding:8px 15px;border-radius:6px;}
+
+/* SUCCESS HERO */
+.d-success{background:linear-gradient(135deg,#0d3a6e,var(--blue) 60%,var(--cyan));position:relative;overflow:hidden;padding:52px 40px 44px;text-align:center;}
+.d-success::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(247,238,38,.12),transparent 60%);}
+.d-success::after{content:'💬';position:absolute;right:30px;bottom:-16px;font-size:96px;opacity:.1;}
+.d-check{width:80px;height:80px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:42px;margin:0 auto 18px;position:relative;z-index:2;box-shadow:0 8px 30px rgba(247,238,38,.4);}
+.d-success h1{position:relative;z-index:2;font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:900;color:#fff;line-height:1.03;margin-bottom:10px;}
+.d-success h1 span{color:var(--yellow);}
+.d-success p{position:relative;z-index:2;font-size:14.5px;color:rgba(255,255,255,.85);max-width:500px;margin:0 auto;line-height:1.65;}
+.d-success p b{color:#fff;}
+
+/* CONTENT */
+.d-wrap{padding:32px 40px 20px;max-width:640px;margin:0 auto;}
+
+/* what next steps */
+.ty-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:20px;}
+.ty-card h2{font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:800;color:var(--ink);margin-bottom:16px;display:flex;align-items:center;gap:9px;}
+.ty-steps{display:flex;flex-direction:column;}
+.ty-step{display:flex;gap:14px;position:relative;padding-bottom:18px;}
+.ty-step:last-child{padding-bottom:0;}
+.ty-step:not(:last-child)::after{content:'';position:absolute;left:17px;top:38px;bottom:0;width:2px;background:var(--line);}
+.ty-step-ico{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px;z-index:2;}
+.ico-done{background:var(--green);color:#fff;}
+.ico-mail{background:rgba(0,153,204,.15);}
+.ico-clock{background:rgba(247,238,38,.3);}
+.ty-step-body h4{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--ink);}
+.ty-step-body p{font-size:12px;color:var(--muted);line-height:1.55;margin-top:2px;}
+.ty-step-body p b{color:var(--ink);}
+
+/* WhatsApp faster CTA */
+.ty-wa{background:linear-gradient(135deg,#128C7E,#25d366);border-radius:14px;padding:22px 24px;text-align:center;margin-bottom:20px;}
+.ty-wa h3{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#fff;margin-bottom:6px;}
+.ty-wa p{font-size:12px;color:rgba(255,255,255,.88);line-height:1.5;margin-bottom:15px;max-width:400px;margin-left:auto;margin-right:auto;}
+.ty-wa .btn{display:inline-block;background:#fff;color:#128C7E;font-size:13px;font-weight:800;padding:12px 26px;border-radius:9px;}
+
+/* meanwhile / explore */
+.ty-explore h2{font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:800;color:var(--ink);margin-bottom:4px;text-align:center;}
+.ty-explore .sub{font-size:12px;color:var(--muted);text-align:center;margin-bottom:18px;}
+.explore-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.explore-card{border:1px solid var(--line);border-radius:11px;overflow:hidden;background:#fff;transition:transform .15s;}
+.explore-card:hover{transform:translateY(-3px);}
+.explore-img{height:80px;display:flex;align-items:flex-end;padding:8px;}
+.explore-chip{font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:3px;background:rgba(255,255,255,.9);color:var(--navy);}
+.explore-body{padding:11px 13px;}
+.explore-body h4{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--ink);line-height:1.1;}
+.explore-body .p{font-size:11px;color:var(--blue);font-weight:700;margin-top:3px;}
+
+.ty-actions{display:flex;gap:10px;justify-content:center;margin-top:24px;}
+.btn-y{background:var(--yellow);color:var(--navy);font-size:12px;font-weight:800;padding:12px 24px;border-radius:8px;}
+.btn-outline{background:#fff;border:1.5px solid var(--line);color:var(--ink);font-size:12px;font-weight:800;padding:12px 24px;border-radius:8px;}
+
+.d-footer{background:#081320;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;margin-top:24px;}
+.d-footer-logo{font-family:'Barlow Condensed',sans-serif;color:#fff;font-weight:900;font-size:14px;}
+.d-footer-logo span{color:var(--yellow);}
+.d-footer-copy{color:rgba(255,255,255,.25);font-size:9.5px;}
+
+/* MOBILE */
+.mobile-outer{width:375px;}
+.mobile-phone{background:#1a1a2e;border-radius:46px;padding:14px 12px;box-shadow:0 24px 64px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.08);border:2px solid #2a2a3e;}
+.phone-notch{width:120px;height:28px;background:#111;border-radius:14px;margin:0 auto 10px;}
+.phone-screen{background:var(--paper);border-radius:34px;overflow:hidden;}
+.m-nav{background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:48px;}
+.m-logo{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;color:#fff;}
+.m-logo span{color:var(--yellow);}
+.m-burger{display:flex;flex-direction:column;gap:3px;}
+.m-burger span{width:17px;height:2px;background:#fff;border-radius:2px;}
+.m-success{background:linear-gradient(135deg,#0d3a6e,var(--blue) 60%,var(--cyan));padding:34px 18px 28px;text-align:center;position:relative;overflow:hidden;}
+.m-check{width:66px;height:66px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:34px;margin:0 auto 14px;box-shadow:0 8px 24px rgba(247,238,38,.4);}
+.m-success h1{font-family:'Barlow Condensed',sans-serif;font-size:29px;font-weight:900;color:#fff;line-height:1.03;margin-bottom:8px;}
+.m-success h1 span{color:var(--yellow);}
+.m-success p{font-size:12.5px;color:rgba(255,255,255,.85);line-height:1.55;}
+.m-success p b{color:#fff;}
+.m-content{padding:16px;display:flex;flex-direction:column;gap:14px;}
+.m-ty-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:17px 16px;}
+.m-ty-card h2{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;margin-bottom:13px;display:flex;align-items:center;gap:8px;}
+.m-ty-step{display:flex;gap:12px;position:relative;padding-bottom:15px;}
+.m-ty-step:last-child{padding-bottom:0;}
+.m-ty-step:not(:last-child)::after{content:'';position:absolute;left:15px;top:34px;bottom:0;width:2px;background:var(--line);}
+.m-ty-step-ico{width:31px;height:31px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;z-index:2;}
+.m-ty-step-body h4{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--ink);}
+.m-ty-step-body p{font-size:11px;color:var(--muted);line-height:1.5;}
+.m-ty-wa{background:linear-gradient(135deg,#128C7E,#25d366);border-radius:12px;padding:18px 16px;text-align:center;}
+.m-ty-wa h3{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;color:#fff;margin-bottom:5px;}
+.m-ty-wa p{font-size:11px;color:rgba(255,255,255,.88);margin-bottom:12px;line-height:1.45;}
+.m-ty-wa .btn{display:block;background:#fff;color:#128C7E;font-size:12px;font-weight:800;padding:12px;border-radius:8px;}
+.m-explore h2{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;text-align:center;margin-bottom:2px;}
+.m-explore .sub{font-size:11px;color:var(--muted);text-align:center;margin-bottom:12px;}
+.m-explore-card{display:flex;gap:11px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;margin-bottom:9px;}
+.m-explore-img{width:74px;flex-shrink:0;}
+.m-explore-body{padding:10px 12px 10px 0;}
+.m-explore-body h4{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;color:var(--ink);}
+.m-explore-body .p{font-size:11px;color:var(--blue);font-weight:700;margin-top:2px;}
+.m-ty-home{display:block;text-align:center;background:var(--yellow);color:var(--navy);font-size:12px;font-weight:800;padding:12px;border-radius:8px;}
+
+/* ANNOTATIONS */
+.ann-col{width:330px;flex-shrink:0;}
+.ann-title{font-size:13px;font-weight:800;color:#0d1a2b;margin-bottom:6px;}
+.ann-intro{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:16px;background:#fff;border:1px solid #dde1e8;border-radius:9px;padding:12px 14px;}
+.ann-intro code{background:#eef2f6;padding:1px 5px;border-radius:3px;color:var(--blue);font-size:10px;font-weight:600;}
+.gblock{background:#fff;border:1px solid #dde1e8;border-radius:9px;padding:12px 14px;margin-bottom:9px;border-left:3px solid var(--blue);}
+.gblock.custom{border-left-color:var(--yellow);}
+.gblock.plugin{border-left-color:var(--cyan);}
+.gblock-head{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+.gblock-sec{font-size:9px;font-weight:800;background:var(--navy);color:#fff;width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.gblock-name{font-size:12px;font-weight:800;color:#0d1a2b;}
+.gblock-tag{font-size:8px;font-weight:700;padding:2px 7px;border-radius:20px;margin-left:auto;}
+.tag-core{background:rgba(10,92,167,.1);color:var(--blue);}
+.tag-custom{background:rgba(247,238,38,.3);color:#8a7400;}
+.tag-plugin{background:rgba(0,153,204,.12);color:var(--cyan);}
+.gblock p{font-size:10.5px;color:var(--muted);line-height:1.55;}
+.gblock code{background:#eef2f6;padding:1px 5px;border-radius:3px;color:#0d1a2b;font-size:9.5px;font-weight:600;}
+.star-block{background:#FFFDF0;border:1px solid rgba(247,238,38,.6);border-left:3px solid var(--yellow);border-radius:9px;padding:13px 15px;margin-bottom:9px;}
+.star-block h4{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--ink);margin-bottom:5px;}
+.star-block p{font-size:10.5px;color:#5a6472;line-height:1.6;}
+.flow{background:#eef4fb;border:1px solid rgba(10,92,167,.2);border-radius:9px;padding:12px 14px;margin-bottom:16px;}
+.flow h4{font-size:11.5px;font-weight:800;color:var(--blue);margin-bottom:8px;}
+.flow-steps{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.flow-chip{font-size:9px;font-weight:700;background:#fff;border:1px solid rgba(10,92,167,.25);color:var(--blue);padding:4px 9px;border-radius:6px;}
+.flow-arrow{color:var(--blue);font-size:11px;}
+.flow-chip.here{background:var(--blue);color:#fff;}
+.data-panel{background:#0d1a2b;border-radius:14px;padding:24px 32px;margin-top:32px;}
+.data-panel h3{color:var(--cyan);font-size:14px;font-weight:800;margin-bottom:16px;font-family:'Barlow Condensed',sans-serif;}
+.data-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.data-card{background:#13243a;border:1px solid rgba(255,255,255,.06);border-radius:9px;padding:14px;}
+.data-card h4{font-size:11px;font-weight:700;margin-bottom:7px;font-family:'Barlow Condensed',sans-serif;}
+.data-card p{font-size:10px;color:#8da9c4;line-height:1.6;}
+</style>
+</head>
+<body>
+
+<div class="meta-header">
+  <div>
+    <h1>Wave Expeditions — Thank You Form · Desktop + Mobile</h1>
+    <p>Página de confirmación tras enviar el formulario de Contact Us · Tranquiliza + da próximos pasos + mantiene el interés</p>
+  </div>
+  <div class="mbadges">
+    <span class="mbadge" style="background:var(--cyan);color:#fff;">Form redirect</span>
+    <span class="mbadge" style="background:#25d366;color:#fff;">WhatsApp más rápido</span>
+  </div>
+</div>
+
+<div class="gb-note">
+  <strong>🧩 Cuándo se muestra:</strong> justo después de que el usuario envía el formulario de <strong>Contact Us</strong>. El plugin de formularios redirige a esta página. Objetivo: confirmar que el mensaje llegó, decir cuándo responderán, ofrecer WhatsApp para algo más rápido, y mantener al usuario navegando (explorar tours) en vez de que abandone el sitio.
+</div>
+
+<div class="legend-bar">
+  <div class="li"><div class="ld" style="background:var(--blue);"></div>Bloque core de Gutenberg</div><div class="legend-sep"></div>
+  <div class="li"><div class="ld" style="background:var(--yellow);"></div>Personalización Wave</div><div class="legend-sep"></div>
+  <div class="li"><div class="ld" style="background:var(--cyan);"></div>Plugin (Form)</div><div class="legend-sep"></div>
+  <div class="li"><div class="ld" style="background:var(--navy);"></div>Header / Footer (global)</div>
+</div>
+
+<div class="layout-row">
+
+  <!-- DESKTOP -->
+  <div class="device-col">
+    <div class="device-label">🖥 DESKTOP <span class="dl-badge">1440px</span></div>
+    <div class="desktop-frame">
+      <div class="desktop-chrome">
+        <div class="chrome-dots"><div class="chrome-dot" style="background:#ff5f57;"></div><div class="chrome-dot" style="background:#febc2e;"></div><div class="chrome-dot" style="background:#28c840;"></div></div>
+        <div class="chrome-bar">🔒 waveexpeditions.com/contact/thank-you/</div>
+      </div>
+      <div class="d-nav">
+        <div class="d-logo">WAVE<span>•</span></div>
+        <span class="nav-link">Rafting Tours ▾</span><span class="nav-link">Safari Float ▾</span><span class="nav-link">Combos</span><span class="nav-link">Rafting Connection</span><span class="nav-link">Why Wave ▾</span><span class="nav-link">Blog &amp; Guide</span>
+        <span class="nav-spacer"></span><span class="nav-book">📅 BOOK NOW</span>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="d-success">
+        <div class="d-check">✓</div>
+        <h1>Message <span>Received!</span></h1>
+        <p>Thanks, <b>Sarah</b>! We've got your message and our local team will get back to you by email shortly. Keep an eye on your inbox (and spam, just in case).</p>
+      </div>
+
+      <div class="d-wrap">
+        <!-- NEXT STEPS -->
+        <div class="ty-card">
+          <h2>🗺 What Happens Now</h2>
+          <div class="ty-steps">
+            <div class="ty-step">
+              <div class="ty-step-ico ico-done">✓</div>
+              <div class="ty-step-body"><h4>Your message is on its way to us</h4><p>We received it and it's already with our team in La Fortuna.</p></div>
+            </div>
+            <div class="ty-step">
+              <div class="ty-step-ico ico-mail">✉️</div>
+              <div class="ty-step-body"><h4>You'll hear from us by email</h4><p>Usually <b>within a few hours</b> during office hours (Mon–Sat, 6 AM–8 PM).</p></div>
+            </div>
+            <div class="ty-step">
+              <div class="ty-step-ico ico-clock">💬</div>
+              <div class="ty-step-body"><h4>Need a faster reply?</h4><p>Message us on WhatsApp and we'll answer right away.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WHATSAPP -->
+        <div class="ty-wa">
+          <h3>💬 Can't Wait? Chat Now</h3>
+          <p>Skip the inbox — reach our local team directly on WhatsApp for an instant reply.</p>
+          <span class="btn">Chat on WhatsApp →</span>
+        </div>
+
+        <!-- EXPLORE MEANWHILE -->
+        <div class="ty-explore">
+          <h2>While You Wait, Explore Our Tours</h2>
+          <div class="sub">The adventures everyone asks about</div>
+          <div class="explore-grid">
+            <div class="explore-card">
+              <div class="explore-img" style="background:linear-gradient(135deg,#0d3a6e,var(--blue));"><span class="explore-chip">⭐ Best Seller</span></div>
+              <div class="explore-body"><h4>Balsa River Rafting</h4><div class="p">From $89 →</div></div>
+            </div>
+            <div class="explore-card">
+              <div class="explore-img" style="background:linear-gradient(135deg,#0d6e7a,var(--cyan));"></div>
+              <div class="explore-body"><h4>Safari Float</h4><div class="p">From $65 →</div></div>
+            </div>
+            <div class="explore-card">
+              <div class="explore-img" style="background:linear-gradient(135deg,#1a3050,var(--navy));"></div>
+              <div class="explore-body"><h4>Rafting Combos</h4><div class="p">From $99 →</div></div>
+            </div>
+          </div>
+          <div class="ty-actions">
+            <span class="btn-y">🌊 See All Tours</span>
+            <span class="btn-outline">🏠 Back to Home</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-footer">
+        <div class="d-footer-logo">WAVE<span>•</span> EXPEDITIONS</div>
+        <div class="d-footer-copy">© 2026 Wave Expeditions · La Fortuna, CR</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOBILE -->
+  <div class="device-col">
+    <div class="device-label">📱 MOBILE <span class="dl-badge">375px</span></div>
+    <div class="mobile-outer">
+      <div class="mobile-phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="m-nav"><div class="m-logo">WAVE<span>•</span></div><div class="m-burger"><span></span><span></span><span></span></div></div>
+          <div class="m-success">
+            <div class="m-check">✓</div>
+            <h1>Message <span>Received!</span></h1>
+            <p>Thanks, <b>Sarah</b>! Our local team will reply by email shortly.</p>
+          </div>
+          <div class="m-content">
+            <div class="m-ty-card">
+              <h2>🗺 What Happens Now</h2>
+              <div class="m-ty-step"><div class="m-ty-step-ico ico-done">✓</div><div class="m-ty-step-body"><h4>Message received</h4><p>It's with our team in La Fortuna.</p></div></div>
+              <div class="m-ty-step"><div class="m-ty-step-ico ico-mail">✉️</div><div class="m-ty-step-body"><h4>Reply by email</h4><p>Within a few hours (Mon–Sat).</p></div></div>
+              <div class="m-ty-step"><div class="m-ty-step-ico ico-clock">💬</div><div class="m-ty-step-body"><h4>Want it faster?</h4><p>WhatsApp us for an instant reply.</p></div></div>
+            </div>
+            <div class="m-ty-wa">
+              <h3>💬 Can't Wait?</h3>
+              <p>Reach our team directly on WhatsApp.</p>
+              <span class="btn">Chat on WhatsApp →</span>
+            </div>
+            <div class="m-explore">
+              <h2>Explore Our Tours</h2>
+              <div class="sub">While you wait</div>
+              <div class="m-explore-card">
+                <div class="m-explore-img" style="background:linear-gradient(135deg,#0d3a6e,var(--blue));"></div>
+                <div class="m-explore-body"><h4>Balsa River Rafting</h4><div class="p">From $89 →</div></div>
+              </div>
+              <div class="m-explore-card">
+                <div class="m-explore-img" style="background:linear-gradient(135deg,#0d6e7a,var(--cyan));"></div>
+                <div class="m-explore-body"><h4>Safari Float</h4><div class="p">From $65 →</div></div>
+              </div>
+              <div style="margin-top:12px;"><span class="m-ty-home">🌊 See All Tours</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANNOTATIONS -->
+  <div class="ann-col">
+    <div class="ann-title">🧩 Mapa técnico</div>
+    <div class="flow">
+      <h4>🔗 Flujo del formulario</h4>
+      <div class="flow-steps">
+        <span class="flow-chip">Contact Us</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-chip">Enviar</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-chip here">Thank You Form</span>
+      </div>
+      <p style="font-size:10px;color:#3d4a5c;margin-top:8px;line-height:1.5;">El plugin redirige aquí al enviar. Esta URL también sirve para medir conversiones en GA4 (página de "gracias" = evento de lead).</p>
+    </div>
+
+    <div class="star-block">
+      <h4>😌 Tranquilizar + retener</h4>
+      <p>El usuario que envía un form entra en incertidumbre ("¿llegó? ¿cuándo responden?"). Esta página lo resuelve: confirma, da tiempo estimado, ofrece WhatsApp para los impacientes, y — clave — lo mantiene en el sitio explorando tours en vez de irse.</p>
+    </div>
+
+    <div class="ann-intro">Página estándar de WordPress (no es de WooCommerce). Se arma con bloques de Gutenberg y el plugin de formularios solo la usa como destino de redirect.</div>
+
+    <div class="gblock"><div class="gblock-head"><span class="gblock-sec">H</span><span class="gblock-name">Header / Footer</span><span class="gblock-tag tag-core">GLOBAL</span></div><p>Del tema, menú v3.</p></div>
+    <div class="gblock custom"><div class="gblock-head"><span class="gblock-sec">1</span><span class="gblock-name">Success hero</span><span class="gblock-tag tag-custom">CUSTOM</span></div><p><code>Cover</code> con check amarillo + mensaje. Si el form pasa el nombre por URL, se puede personalizar ("Thanks, Sarah"). Si no, mensaje genérico.</p></div>
+    <div class="gblock custom"><div class="gblock-head"><span class="gblock-sec">2</span><span class="gblock-name">What Happens Now</span><span class="gblock-tag tag-custom">CUSTOM</span></div><p>Timeline de 3 pasos. Estático. Baja la ansiedad post-envío y aclara el tiempo de respuesta.</p></div>
+    <div class="gblock custom"><div class="gblock-head"><span class="gblock-sec">3</span><span class="gblock-name">WhatsApp CTA</span><span class="gblock-tag tag-custom">CUSTOM</span></div><p>Para quien no quiere esperar el email. <code>Button</code> a wa.me con mensaje pre-llenado.</p></div>
+    <div class="gblock custom"><div class="gblock-head"><span class="gblock-sec">4</span><span class="gblock-name">Explore tours</span><span class="gblock-tag tag-custom">CUSTOM</span></div><p><code>Columns</code> con 3 tours destacados. Mantiene al usuario navegando (retención) en vez de abandonar tras enviar.</p></div>
+    <div class="gblock plugin"><div class="gblock-head"><span class="gblock-sec">R</span><span class="gblock-name">Redirect del form</span><span class="gblock-tag tag-plugin">PLUGIN</span></div><p>En WPForms / CF7 se configura "confirmation → redirect" a esta URL. También ideal para el tracking de conversión (GA4 / Meta Pixel).</p></div>
+  </div>
+
+</div>
+
+<div class="data-panel">
+  <h3>🎯 Notas para el equipo</h3>
+  <div class="data-grid">
+    <div class="data-card"><h4 style="color:#58a6ff;">😌 Reduce ansiedad</h4><p>Confirma que el mensaje llegó y da tiempo estimado de respuesta. El usuario no queda con dudas de si el form funcionó.</p></div>
+    <div class="data-card"><h4 style="color:#25d366;">💬 Vía rápida</h4><p>WhatsApp para los que no quieren esperar. Reduce la sensación de "envié y no pasó nada".</p></div>
+    <div class="data-card"><h4 style="color:#F7EE26;">🔄 Retiene</h4><p>En vez de un callejón sin salida, invita a explorar tours. Aprovecha el momento de interés para seguir navegando.</p></div>
+    <div class="data-card"><h4 style="color:#4ade80;">📊 Mide conversión</h4><p>Esta URL es el "goal" en GA4: cada visita = un lead de contacto capturado. Útil para medir el rendimiento del form.</p></div>
+  </div>
+</div>
+
+</body>
+</html>

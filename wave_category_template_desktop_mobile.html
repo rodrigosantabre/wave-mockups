@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wave Expeditions – Product Category Template (Desktop + Mobile)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--blue:#0A5CA7;--yellow:#F7EE26;--cyan:#0099CC;--navy:#2D4059;--ink:#1A2535;--muted:#64748B;--line:#E6EBF1;--paper:#FBFCFD;--green:#16A34A;}
+body{font-family:'Barlow',sans-serif;background:#e8ecf1;padding:36px 40px 60px;min-width:1600px;color:var(--ink);}
+.meta-header{background:#0d1a2b;color:#fff;border-radius:14px;padding:22px 32px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(10,92,167,.35);}
+.meta-header h1{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;}
+.meta-header p{font-size:12px;color:#7d9ab5;margin-top:4px;}
+.mbadges{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+.mbadge{padding:5px 13px;border-radius:20px;font-size:10.5px;font-weight:700;}
+.gb-note{background:#0d1a2b;border:1px solid rgba(10,92,167,.3);border-left:3px solid var(--cyan);border-radius:10px;padding:13px 20px;margin-bottom:24px;color:#a8c0d8;font-size:12px;line-height:1.6;}
+.gb-note strong{color:var(--cyan);}
+.legend-bar{display:flex;gap:16px;flex-wrap:wrap;background:#fff;border-radius:10px;padding:12px 22px;border:1px solid #dde1e8;margin-bottom:28px;align-items:center;}
+.li{display:flex;align-items:center;gap:7px;font-size:11.5px;color:#444;}
+.ld{width:13px;height:13px;border-radius:3px;flex-shrink:0;}
+.legend-sep{width:1px;height:20px;background:#dde1e8;}
+.layout-row{display:flex;gap:44px;align-items:flex-start;justify-content:center;}
+.device-col{display:flex;flex-direction:column;align-items:center;}
+.device-label{font-size:13px;font-weight:700;color:#0d1a2b;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.device-label .dl-badge{background:var(--blue);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;}
+.desktop-frame{width:900px;border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.18);border:2px solid #c8cdd6;background:var(--paper);}
+.desktop-chrome{background:#f0f0f0;border-bottom:1px solid #ddd;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.chrome-dots{display:flex;gap:5px;}
+.chrome-dot{width:11px;height:11px;border-radius:50%;}
+.chrome-bar{flex:1;background:#fff;border:1px solid #ddd;border-radius:5px;padding:4px 10px;font-size:10px;color:#888;}
+
+.d-nav{background:var(--navy);display:flex;align-items:center;padding:0 22px;height:52px;gap:4px;}
+.d-logo{font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:900;color:#fff;margin-right:14px;}
+.d-logo span{color:var(--yellow);}
+.nav-link{color:rgba(255,255,255,.85);font-size:11.5px;font-weight:600;padding:7px 10px;border-radius:5px;}
+.nav-link.active{color:var(--yellow);}
+.nav-spacer{flex:1;}
+.nav-book{background:var(--yellow);color:var(--navy);font-size:11px;font-weight:800;padding:8px 15px;border-radius:6px;}
+
+/* CATEGORY HERO */
+.d-hero{position:relative;min-height:250px;background:linear-gradient(180deg,rgba(13,26,43,.2),rgba(13,26,43,.72)),linear-gradient(120deg,#0d3a6e,var(--blue) 60%,var(--cyan));display:flex;flex-direction:column;justify-content:flex-end;padding:30px 40px 28px;overflow:hidden;}
+.d-hero .photo-label{position:absolute;top:14px;right:16px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);font-size:9px;font-weight:600;padding:4px 10px;border-radius:20px;}
+.d-hero .bc{font-size:10.5px;color:rgba(255,255,255,.75);margin-bottom:12px;position:relative;z-index:2;}
+.d-hero .cat-pill{display:inline-block;background:var(--yellow);color:var(--navy);font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 11px;border-radius:4px;margin-bottom:11px;position:relative;z-index:2;width:fit-content;}
+.d-hero h1{font-family:'Barlow Condensed',sans-serif;font-size:42px;font-weight:900;color:#fff;line-height:1.02;margin-bottom:9px;position:relative;z-index:2;max-width:600px;}
+.d-hero p{font-size:14px;color:rgba(255,255,255,.85);max-width:540px;line-height:1.6;position:relative;z-index:2;}
+.d-hero-stats{display:flex;gap:22px;margin-top:16px;position:relative;z-index:2;}
+.hero-stat{color:#fff;}
+.hero-stat b{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;color:var(--yellow);}
+.hero-stat span{font-size:10px;color:rgba(255,255,255,.7);display:block;}
+
+/* INTRO SEO text */
+.d-intro{padding:22px 40px 8px;}
+.d-intro p{font-size:13.5px;color:#3d4a5c;line-height:1.7;max-width:760px;}
+.d-intro p strong{color:var(--ink);}
+
+/* FILTER / SORT BAR */
+.d-filterbar{padding:14px 40px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:5;}
+.filter-count{font-size:12px;color:var(--muted);font-weight:600;}
+.filter-count b{color:var(--ink);}
+.filter-spacer{flex:1;}
+.filter-chip{font-size:11px;font-weight:700;color:var(--ink);border:1.5px solid var(--line);border-radius:20px;padding:6px 13px;background:#fff;}
+.filter-chip.active{background:var(--blue);color:#fff;border-color:var(--blue);}
+.filter-sort{font-size:11px;font-weight:600;color:var(--muted);border:1.5px solid var(--line);border-radius:8px;padding:7px 12px;background:#fff;}
+
+/* PRODUCT GRID */
+.d-grid{padding:22px 40px 34px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.prod-card{border:1px solid var(--line);border-radius:13px;overflow:hidden;background:#fff;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s;}
+.prod-card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(10,92,167,.13);}
+.prod-img{height:170px;position:relative;display:flex;align-items:flex-start;justify-content:space-between;padding:12px;}
+.prod-badge{font-size:9px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:4px;}
+.badge-best{background:var(--yellow);color:var(--navy);}
+.badge-new{background:var(--green);color:#fff;}
+.prod-fav{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;font-size:14px;}
+.prod-body{padding:15px 17px;flex:1;display:flex;flex-direction:column;}
+.prod-rating{display:flex;align-items:center;gap:5px;font-size:10.5px;color:var(--muted);margin-bottom:5px;}
+.prod-rating .stars{color:#FBBF24;font-size:11px;}
+.prod-body h3{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--ink);line-height:1.05;margin-bottom:6px;}
+.prod-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px;}
+.prod-tag{font-size:9.5px;font-weight:700;color:var(--blue);background:rgba(10,92,167,.08);padding:2px 8px;border-radius:5px;}
+.prod-desc{font-size:11.5px;color:var(--muted);line-height:1.55;margin-bottom:12px;flex:1;}
+.prod-foot{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--line);}
+.prod-price{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:var(--blue);}
+.prod-price small{font-size:10px;color:var(--muted);font-weight:400;}
+.prod-price .from{display:block;font-size:9px;color:var(--muted);font-weight:400;letter-spacing:.04em;text-transform:uppercase;line-height:1;margin-bottom:1px;}
+.prod-btn{background:var(--yellow);color:var(--navy);font-size:11px;font-weight:800;padding:9px 17px;border-radius:7px;}
+
+/* WHY THIS CATEGORY band */
+.d-why{padding:28px 40px;background:#fff;border-top:1px solid var(--line);}
+.d-why h3{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:var(--ink);text-align:center;margin-bottom:18px;}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.why-item{text-align:center;padding:14px;}
+.why-ico{font-size:26px;margin-bottom:7px;}
+.why-item h4{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--ink);margin-bottom:3px;}
+.why-item p{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* FAQ */
+.d-faq{padding:26px 40px;background:var(--paper);border-top:1px solid var(--line);}
+.d-faq h3{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:var(--ink);margin-bottom:14px;}
+.d-faq-item{border:1px solid var(--line);border-radius:9px;padding:12px 15px;margin-bottom:8px;background:#fff;display:flex;justify-content:space-between;font-size:12.5px;font-weight:700;color:var(--ink);}
+.d-faq-item span{color:var(--blue);font-size:16px;}
+
+/* CTA band */
+.d-cta{background:linear-gradient(135deg,var(--navy),var(--blue));padding:28px 40px;text-align:center;}
+.d-cta h3{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:900;color:#fff;margin-bottom:6px;}
+.d-cta p{font-size:12px;color:rgba(255,255,255,.7);margin-bottom:15px;}
+.d-cta-btns{display:flex;gap:10px;justify-content:center;}
+.btn-y{background:var(--yellow);color:var(--navy);font-size:12px;font-weight:800;padding:11px 22px;border-radius:7px;}
+.btn-wa{background:#25d366;color:#fff;font-size:12px;font-weight:800;padding:11px 22px;border-radius:7px;}
+
+.d-footer{background:#081320;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;}
+.d-footer-logo{font-family:'Barlow Condensed',sans-serif;color:#fff;font-weight:900;font-size:14px;}
+.d-footer-logo span{color:var(--yellow);}
+.d-footer-copy{color:rgba(255,255,255,.25);font-size:9.5px;}
+
+/* MOBILE */
+.mobile-outer{width:375px;}
+.mobile-phone{background:#1a1a2e;border-radius:46px;padding:14px 12px;box-shadow:0 24px 64px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.08);border:2px solid #2a2a3e;}
+.phone-notch{width:120px;height:28px;background:#111;border-radius:14px;margin:0 auto 10px;}
+.phone-screen{background:var(--paper);border-radius:34px;overflow:hidden;}
+.m-nav{background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:48px;}
+.m-logo{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;color:#fff;}
+.m-logo span{color:var(--yellow);}
+.m-burger{display:flex;flex-direction:column;gap:3px;}
+.m-burger span{width:17px;height:2px;background:#fff;border-radius:2px;}
+.m-hero{position:relative;min-height:180px;background:linear-gradient(180deg,rgba(13,26,43,.15),rgba(13,26,43,.8)),linear-gradient(120deg,#0d3a6e,var(--blue) 60%,var(--cyan));display:flex;flex-direction:column;justify-content:flex-end;padding:16px;}
+.m-cat-pill{display:inline-block;background:var(--yellow);color:var(--navy);font-size:8.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:4px;margin-bottom:8px;width:fit-content;position:relative;z-index:2;}
+.m-hero h1{font-family:'Barlow Condensed',sans-serif;font-size:27px;font-weight:900;color:#fff;line-height:1.03;position:relative;z-index:2;margin-bottom:6px;}
+.m-hero p{font-size:11.5px;color:rgba(255,255,255,.82);line-height:1.45;position:relative;z-index:2;}
+.m-filterbar{padding:11px 16px;display:flex;gap:7px;overflow-x:auto;background:#fff;border-bottom:1px solid var(--line);}
+.m-filter-chip{font-size:10.5px;font-weight:700;color:var(--ink);border:1.5px solid var(--line);border-radius:20px;padding:5px 12px;white-space:nowrap;flex-shrink:0;}
+.m-filter-chip.active{background:var(--blue);color:#fff;border-color:var(--blue);}
+.m-grid{padding:14px 16px;display:flex;flex-direction:column;gap:13px;}
+.m-prod{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;}
+.m-prod-img{height:130px;position:relative;display:flex;align-items:flex-start;padding:10px;}
+.m-prod-badge{font-size:8px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:3px;}
+.m-prod-body{padding:12px 14px;}
+.m-prod-rating{font-size:10px;color:var(--muted);margin-bottom:4px;}
+.m-prod-rating .stars{color:#FBBF24;}
+.m-prod-body h3{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;color:var(--ink);margin-bottom:5px;}
+.m-prod-meta{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;}
+.m-prod-tag{font-size:9px;font-weight:700;color:var(--blue);background:rgba(10,92,167,.08);padding:2px 7px;border-radius:4px;}
+.m-prod-foot{display:flex;align-items:center;justify-content:space-between;padding-top:10px;border-top:1px solid var(--line);}
+.m-prod-price{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;color:var(--blue);}
+.m-prod-price small{font-size:9px;color:var(--muted);font-weight:400;}
+.m-prod-btn{background:var(--yellow);color:var(--navy);font-size:10px;font-weight:800;padding:8px 15px;border-radius:6px;}
+.m-sticky-bar{display:flex;gap:8px;padding:9px 14px;background:#0d1a2b;position:sticky;bottom:0;border-top:1px solid rgba(255,255,255,.08);}
+.m-sticky-filter{flex:1;background:rgba(255,255,255,.12);color:#fff;font-size:11px;font-weight:800;padding:10px;border-radius:7px;text-align:center;}
+.m-sticky-wa{flex:1;background:#25d366;color:#fff;font-size:11px;font-weight:800;padding:10px;border-radius:7px;text-align:center;}
+
+/* ANNOTATIONS */
+.ann-col{width:330px;flex-shrink:0;}
+.ann-title{font-size:13px;font-weight:800;color:#0d1a2b;margin-bottom:6px;}
+.ann-intro{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:16px;background:#fff;border:1px solid #dde1e8;border-radius:9px;padding:12px 14px;}
+.ann-intro code{background:#eef2f6;padding:1px 5px;border-radius:3px;color:var(--blue);font-size:10px;font-weight:600;}
+.gblock{background:#fff;border:1px solid #dde1e8;border-radius:9px;padding:12px 14px;margin-bottom:9px;border-left:3px solid var(--blue);}
+.gblock.custom{border-left-color:var(--yellow);}
+.gblock.woo{border-left-color:#7a47a7;}
+.gblock-head{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+.gblock-sec{font-size:9px;font-weight:800;background:var(--navy);color:#fff;width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.gblock-name{font-size:12px;font-weight:800;color:#0d1a2b;}
+.gblock-tag{font-size:8px;font-weight:700;padding:2px 7px;border-radius:20px;margin-left:auto;}
+.tag-core{background:rgba(10,92,167,.1);color:var(--blue);}
+.tag-custom{background:rgba(247,238,38,.3);color:#8a7400;}
+.tag-woo{background:rgba(122,71,167,.12);color:#7a47a7;}
+.gblock p{font-size:10.5px;color:var(--muted);line-height:1.55;}
+.gblock code{background:#eef2f6;padding:1px 5px;border-radius:3px;color:#0d1a2b;font-size:9.5px;font-weight:600;}
+.star-block{background:#FFFDF0;border:1px solid rgba(247,238,38,.6);border-left:3px solid var(--yellow);border-radius:9px;padding:13px 15px;margin-bottom:9px;}
+.star-block h4{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--ink);margin-bottom:5px;}
+.star-block p{font-size:10.5px;color:#5a6472;line-height:1.6;}
+.reuse{background:#eef4fb;border:1px solid rgba(10,92,167,.2);border-radius:9px;padding:12px 14px;margin-bottom:16px;}
+.reuse h4{font-size:11.5px;font-weight:800;color:var(--blue);margin-bottom:6px;}
+.reuse p{font-size:10.5px;color:#3d4a5c;line-height:1.55;}
+.reuse .cats{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+.reuse .catchip{font-size:9px;font-weight:700;background:#fff;border:1px solid rgba(10,92,167,.25);color:var(--blue);padding:3px 9px;border-radius:20px;}
+.data-panel{background:#0d1a2b;border-radius:14px;padding:24px 32px;margin-top:32px;}
+.data-panel h3{color:var(--cyan);font-size:14px;font-weight:800;margin-bottom:16px;font-family:'Barlow Condensed',sans-serif;}
+.data-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.data-card{background:#13243a;border:1px solid rgba(255,255,255,.06);border-radius:9px;padding:14px;}
+.data-card h4{font-size:11px;font-weight:700;margin-bottom:7px;font-family:'Barlow Condensed',sans-serif;}
+.data-card p{font-size:10px;color:#8da9c4;line-height:1.6;}
+</style>
+</head>
+<body>
+
+<div class="meta-header">
+  <div>
+    <h1>Wave Expeditions — Product Category Template · Desktop + Mobile</h1>
+    <p>Plantilla BASE de página de categoría · Reutilizable para Rafting · Safari Float · Combos (cada una por separado)</p>
+  </div>
+  <div class="mbadges">
+    <span class="mbadge" style="background:#7a47a7;color:#fff;">WooCommerce category</span>
+    <span class="mbadge" style="background:var(--yellow);color:var(--navy);">Plantilla reutilizable</span>
+  </div>
+</div>
+
+<div class="gb-note">
+  <strong>🧩 Base para el web master:</strong> esta es UNA plantilla de categoría que sirve de molde para las 3 categorías (Rafting, Safari Float, Combos), cada una en su propia URL. El ejemplo muestra <strong>Rafting Tours</strong>. Solo cambian: hero, texto SEO, los productos (WooCommerce los trae solos por categoría) y los FAQs. El layout, grid y estilos son idénticos.
+</div>
+
+<div class="legend-bar">
+  <div class="li"><div class="ld" style="background:var(--blue);"></div>Bloque core de Gutenberg</div><div class="legend-sep"></div>
+  <div class="li"><div class="ld" style="background:var(--yellow);"></div>Personalización Wave</div><div class="legend-sep"></div>
+  <div class="li"><div class="ld" style="background:#7a47a7;"></div>WooCommerce (dinámico)</div><div class="legend-sep"></div>
+  <div class="li"><div class="ld" style="background:var(--navy);"></div>Header / Footer (global)</div>
+</div>
+
+<div class="layout-row">
+
+  <!-- DESKTOP -->
+  <div class="device-col">
+    <div class="device-label">🖥 DESKTOP <span class="dl-badge">1440px</span></div>
+    <div class="desktop-frame">
+      <div class="desktop-chrome">
+        <div class="chrome-dots"><div class="chrome-dot" style="background:#ff5f57;"></div><div class="chrome-dot" style="background:#febc2e;"></div><div class="chrome-dot" style="background:#28c840;"></div></div>
+        <div class="chrome-bar">🔒 waveexpeditions.com/rafting/</div>
+      </div>
+      <div class="d-nav">
+        <div class="d-logo">WAVE<span>•</span></div>
+        <span class="nav-link active">Rafting Tours ▾</span><span class="nav-link">Safari Float ▾</span><span class="nav-link">Combos</span><span class="nav-link">Rafting Connection</span><span class="nav-link">Why Wave ▾</span><span class="nav-link">Blog &amp; Guide</span>
+        <span class="nav-spacer"></span><span class="nav-book">📅 BOOK NOW</span>
+      </div>
+
+      <!-- HERO -->
+      <div class="d-hero">
+        <div class="photo-label">📷 Cover · foto de la categoría (rafting action)</div>
+        <div class="bc">Home › Rafting Tours</div>
+        <span class="cat-pill">Category</span>
+        <h1>White Water Rafting Tours</h1>
+        <p>From gentle family rapids to Class IV adrenaline — choose your river adventure in La Fortuna, Costa Rica.</p>
+        <div class="d-hero-stats">
+          <div class="hero-stat"><b>2</b><span>Rivers</span></div>
+          <div class="hero-stat"><b>II–IV</b><span>Difficulty</span></div>
+          <div class="hero-stat"><b>6+</b><span>Min age</span></div>
+          <div class="hero-stat"><b>4.9★</b><span>Rating</span></div>
+        </div>
+      </div>
+
+      <!-- INTRO SEO -->
+      <div class="d-intro">
+        <p><strong>Rafting is what put Wave on the map.</strong> Two rivers, two completely different experiences — the family-friendly Balsa (Class II–III) and the adrenaline-packed Sarapiquí (Class III–IV). Every tour includes certified local guides, hotel pickup, safety gear, and a traditional Costa Rican lunch. Pick your river below.</p>
+      </div>
+
+      <!-- FILTER BAR -->
+      <div class="d-filterbar">
+        <span class="filter-count"><b>2</b> tours</span>
+        <span class="filter-spacer"></span>
+        <span class="filter-chip active">All levels</span>
+        <span class="filter-chip">Family (II–III)</span>
+        <span class="filter-chip">Thrill (III–IV)</span>
+        <span class="filter-sort">↕ Sort: Popular</span>
+      </div>
+
+      <!-- PRODUCT GRID -->
+      <div class="d-grid">
+        <div class="prod-card">
+          <div class="prod-img" style="background:linear-gradient(135deg,#0d3a6e,var(--blue));">
+            <span class="prod-badge badge-best">⭐ Best Seller</span>
+            <span class="prod-fav">🤍</span>
+          </div>
+          <div class="prod-body">
+            <div class="prod-rating"><span class="stars">★★★★★</span> 4.9 · 320+ reviews</div>
+            <h3>Balsa River Rafting</h3>
+            <div class="prod-meta"><span class="prod-tag">Class II–III</span><span class="prod-tag">Ages 6+</span><span class="prod-tag">~5 hrs</span></div>
+            <div class="prod-desc">Fun, scenic rapids through a jungle canyon. Perfect for families and first-timers. Hotel pickup + lunch included.</div>
+            <div class="prod-foot">
+              <div class="prod-price"><span class="from">From</span>$89<small>/pp</small></div>
+              <span class="prod-btn">VIEW &amp; BOOK →</span>
+            </div>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img" style="background:linear-gradient(135deg,#7c1a1a,#c0392b);">
+            <span class="prod-badge" style="background:#c0392b;color:#fff;">⚡ Thrill</span>
+            <span class="prod-fav">🤍</span>
+          </div>
+          <div class="prod-body">
+            <div class="prod-rating"><span class="stars">★★★★★</span> 4.9 · 210+ reviews</div>
+            <h3>Sarapiquí River Rafting</h3>
+            <div class="prod-meta"><span class="prod-tag">Class III–IV</span><span class="prod-tag">Ages 12+</span><span class="prod-tag">~7 hrs</span></div>
+            <div class="prod-desc">16 km of relentless Class III–IV rapids through a remote jungle corridor. For adrenaline seekers.</div>
+            <div class="prod-foot">
+              <div class="prod-price"><span class="from">From</span>$109<small>/pp</small></div>
+              <span class="prod-btn">VIEW &amp; BOOK →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WHY -->
+      <div class="d-why">
+        <h3>Why Raft with Wave?</h3>
+        <div class="why-grid">
+          <div class="why-item"><div class="why-ico">🛡️</div><h4>Certified Guides</h4><p>INA &amp; ICT certified · 15+ yrs on these rivers</p></div>
+          <div class="why-item"><div class="why-ico">🚐</div><h4>Hotel Pickup</h4><p>Included from La Fortuna / Arenal area</p></div>
+          <div class="why-item"><div class="why-ico">🍽</div><h4>Lunch Included</h4><p>Traditional Costa Rican meal after the tour</p></div>
+          <div class="why-item"><div class="why-ico">🏡</div><h4>100% Local</h4><p>Family-owned, born in La Fortuna since 2008</p></div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="d-faq">
+        <h3>Rafting FAQ</h3>
+        <div class="d-faq-item">Which river is right for my group?<span>+</span></div>
+        <div class="d-faq-item">Do I need rafting experience?<span>+</span></div>
+        <div class="d-faq-item">What should I bring?<span>+</span></div>
+      </div>
+
+      <!-- CTA -->
+      <div class="d-cta">
+        <h3>Not Sure Which River?</h3>
+        <p>Tell us your group and we'll recommend the perfect rafting tour.</p>
+        <div class="d-cta-btns">
+          <span class="btn-y">📅 BOOK NOW</span>
+          <span class="btn-wa">💬 Ask on WhatsApp</span>
+        </div>
+      </div>
+
+      <div class="d-footer">
+        <div class="d-footer-logo">WAVE<span>•</span> EXPEDITIONS</div>
+        <div class="d-footer-copy">© 2026 Wave Expeditions · La Fortuna, CR</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOBILE -->
+  <div class="device-col">
+    <div class="device-label">📱 MOBILE <span class="dl-badge">375px</span></div>
+    <div class="mobile-outer">
+      <div class="mobile-phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="m-nav"><div class="m-logo">WAVE<span>•</span></div><div class="m-burger"><span></span><span></span><span></span></div></div>
+          <div class="m-hero">
+            <span class="m-cat-pill">Category</span>
+            <h1>White Water Rafting Tours</h1>
+            <p>From family rapids to Class IV adrenaline — choose your river in La Fortuna.</p>
+          </div>
+          <div class="m-filterbar">
+            <span class="m-filter-chip active">All levels</span>
+            <span class="m-filter-chip">Family (II–III)</span>
+            <span class="m-filter-chip">Thrill (III–IV)</span>
+            <span class="m-filter-chip">↕ Sort</span>
+          </div>
+          <div class="m-grid">
+            <div class="m-prod">
+              <div class="m-prod-img" style="background:linear-gradient(135deg,#0d3a6e,var(--blue));"><span class="m-prod-badge badge-best">⭐ Best Seller</span></div>
+              <div class="m-prod-body">
+                <div class="m-prod-rating"><span class="stars">★★★★★</span> 4.9 · 320+ reviews</div>
+                <h3>Balsa River Rafting</h3>
+                <div class="m-prod-meta"><span class="m-prod-tag">Class II–III</span><span class="m-prod-tag">Ages 6+</span><span class="m-prod-tag">~5 hrs</span></div>
+                <div class="m-prod-foot"><div class="m-prod-price">From $89<small>/pp</small></div><span class="m-prod-btn">VIEW →</span></div>
+              </div>
+            </div>
+            <div class="m-prod">
+              <div class="m-prod-img" style="background:linear-gradient(135deg,#7c1a1a,#c0392b);"><span class="m-prod-badge" style="background:#c0392b;color:#fff;">⚡ Thrill</span></div>
+              <div class="m-prod-body">
+                <div class="m-prod-rating"><span class="stars">★★★★★</span> 4.9 · 210+ reviews</div>
+                <h3>Sarapiquí River Rafting</h3>
+                <div class="m-prod-meta"><span class="m-prod-tag">Class III–IV</span><span class="m-prod-tag">Ages 12+</span><span class="m-prod-tag">~7 hrs</span></div>
+                <div class="m-prod-foot"><div class="m-prod-price">From $109<small>/pp</small></div><span class="m-prod-btn">VIEW →</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="m-sticky-bar">
+            <span class="m-sticky-filter">⚙ Filter &amp; Sort</span>
+            <span class="m-sticky-wa">💬 WhatsApp</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANNOTATIONS -->
+  <div class="ann-col">
+    <div class="ann-title">🧩 Mapa técnico</div>
+    <div class="reuse">
+      <h4>♻️ Una plantilla, 3 categorías</h4>
+      <p>El web master construye esta plantilla UNA vez. WooCommerce ya agrupa los productos por categoría, así que la misma estructura sirve para las 3 — solo cambia el contenido del hero, el texto SEO y los FAQs.</p>
+      <div class="cats"><span class="catchip">🌊 Rafting</span><span class="catchip">🌿 Safari Float</span><span class="catchip">🎯 Combos</span></div>
+    </div>
+
+    <div class="ann-intro">Es el template <code>taxonomy-product_cat</code> de WooCommerce, envuelto en el diseño de Wave. La grilla de productos es dinámica; el resto (hero, SEO, why, FAQ) es editable por categoría.</div>
+
+    <div class="gblock"><div class="gblock-head"><span class="gblock-sec">H</span><span class="gblock-name">Header / Footer</span><span class="gblock-tag tag-core">GLOBAL</span></div><p>Del tema (Site Editor), menú v3.</p></div>
+    <div class="gblock custom"><div class="gblock-head"><span class="gblock-sec">1</span><span class="gblock-name">Category Hero</span><span class="gblock-tag tag-custom">CUSTOM</span></div><p><code>Cover</code> con imagen + título de la categoría + stats. Editable por categoría (imagen y copy distintos para Rafting / Safari / Combos).</p></div>
+    <div class="gblock custom"><div class="gblock-head"><span class="gblock-sec">2</span><span class="gblock-name">Texto SEO intro</span><span class="gblock-tag tag-custom">CUSTOM</span></div><p><code>Paragraph</code> con la descripción de la categoría. Clave para SEO — va en el campo "descripción de categoría" de WooCommerce o como bloque.</p></div>
+    <div class="gblock woo"><div class="gblock-head"><span class="gblock-sec">3</span><span class="gblock-name">Filter / Sort bar</span><span class="gblock-tag tag-woo">WOO</span></div><p>Filtros por atributo (nivel/dificultad) + ordenamiento nativo de WooCommerce. Plugin opcional para filtros AJAX.</p></div>
+    <div class="star-block">
+      <h4>⭐ Grilla de productos (dinámica)</h4>
+      <p>El corazón de la plantilla. WooCommerce trae automáticamente los productos de esa categoría. El web master estiliza la <strong>product card</strong> una vez (imagen, badge, rating, tags, precio "From", botón) y aplica a todas. 2 columnas desktop / 1 mobile.</p>
+    </div>
+    <div class="gblock custom"><div class="gblock-head"><span class="gblock-sec">4</span><span class="gblock-name">Why this category</span><span class="gblock-tag tag-custom">CUSTOM</span></div><p><code>Columns</code> con 4 diferenciadores. Reutilizable; ajustar copy por categoría.</p></div>
+    <div class="gblock custom"><div class="gblock-head"><span class="gblock-sec">5</span><span class="gblock-name">FAQ + CTA band</span><span class="gblock-tag tag-custom">CUSTOM</span></div><p>Acordeón con FAQ Schema + banda final Book / WhatsApp. Ayuda SEO y conversión.</p></div>
+    <div class="gblock custom"><div class="gblock-head"><span class="gblock-sec">M</span><span class="gblock-name">Sticky mobile</span><span class="gblock-tag tag-custom">CUSTOM</span></div><p>Filter &amp; Sort + WhatsApp fijos abajo.</p></div>
+  </div>
+
+</div>
+
+<div class="data-panel">
+  <h3>🎯 Notas para el equipo</h3>
+  <div class="data-grid">
+    <div class="data-card"><h4 style="color:#F7EE26;">♻️ Escalable</h4><p>Misma plantilla para Rafting, Safari y Combos. Si mañana se agrega un producto a una categoría, aparece solo en la grilla — sin tocar el diseño.</p></div>
+    <div class="data-card"><h4 style="color:#a78bfa;">🛒 WooCommerce</h4><p>La grilla usa los productos reales del catálogo. Precio "From", rating y badges salen de los datos del producto.</p></div>
+    <div class="data-card"><h4 style="color:#58a6ff;">🔍 SEO por categoría</h4><p>Hero + texto intro + FAQ Schema hacen que cada categoría posicione por su keyword ("white water rafting Costa Rica", "safari float La Fortuna").</p></div>
+    <div class="data-card"><h4 style="color:#4ade80;">🎚️ Filtros útiles</h4><p>En Rafting: filtrar por nivel. En Combos: por actividad. Ayuda al usuario a decidir rápido sin salir de la categoría.</p></div>
+  </div>
+</div>
+
+</body>
+</html>
